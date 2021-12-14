@@ -31,6 +31,11 @@ func NewClient(config *openapi.Configuration) (*Client, error) {
 	return NewClientWithServerIndex(config, 0)
 }
 
+func NewDefaultClient() (*Client, error) {
+	config := openapi.NewConfiguration()
+	return NewClient(config)
+}
+
 func NewClientWithServerIndex(config *openapi.Configuration, serverIndex int) (*Client, error) {
 	client := openapi.NewAPIClient(config)
 	rawURL, _ := config.Servers.URL(serverIndex, nil)
