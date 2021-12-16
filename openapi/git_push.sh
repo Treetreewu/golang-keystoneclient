@@ -1,6 +1,4 @@
 #!/bin/sh
-# Copyright 2017 EasyStack, Inc.
-
 # ref: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
 #
 # Usage example: /bin/sh ./git_push.sh wing328 openapi-petstore-perl "minor update" "gitlab.com"

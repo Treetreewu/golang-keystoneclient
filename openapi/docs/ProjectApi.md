@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    projectCreateRequest := *openapiclient.NewProjectCreateRequest(*openapiclient.NewProjectCreate()) // ProjectCreateRequest |  (optional)
+    projectCreateRequest := *openapiclient.NewProjectCreateRequest(*openapiclient.NewProjectCreate("Name_example")) // ProjectCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
