@@ -41,7 +41,7 @@ if err != nil {
 fmt.Println(client.Token)
 
 // API Call
-resp, r, err := client.DomainApi.ListDomain(context.TODO()).Execute()
+resp, r, err := client.DomainApi.ListDomains(context.TODO()).Execute()
 ```
 
 ### How to change the server configuration?
@@ -60,7 +60,7 @@ client, err := keystone.NewClientWithServerIndex(config, serverIndex)
 
 // API Call
 ctx := context.WithValue(context.TODO(), openapi.ContextServerIndex, serverIndex)
-resp, r, err := client.DomainApi.ListDomain(ctx).Execute()
+resp, r, err := client.DomainApi.ListDomains(ctx).Execute()
 
 ```
 

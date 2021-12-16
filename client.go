@@ -13,8 +13,7 @@ import (
 )
 
 const (
-	DefaultDomainID = "default"
-	TokenHeader     = "X-Auth-Token"
+	TokenHeader = "X-Auth-Token"
 )
 
 type Client struct {

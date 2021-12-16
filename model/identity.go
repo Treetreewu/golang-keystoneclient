@@ -23,6 +23,7 @@ type Scope interface{}
 type ExplicitUnScoped = string
 
 type DomainScope struct {
+	Scope  `json:",omitempty,inline"`
 	Domain struct {
 		IDOrName
 	} `json:"domain"`
@@ -40,6 +41,7 @@ func NewDomainScope(id *string, name *string) *DomainScope {
 }
 
 type SystemScope struct {
+	Scope  `json:",omitempty,inline"`
 	System struct {
 		All bool `json:"all"`
 	} `json:"system"`
@@ -52,6 +54,7 @@ func NewSystemScope() *SystemScope {
 }
 
 type ProjectScope struct {
+	Scope   `json:",omitempty,inline"`
 	Project struct {
 		IDOrName
 		Domain struct {
@@ -90,7 +93,8 @@ func NewProjectScope(
 type Credential interface{}
 
 type PasswordCredential struct {
-	User struct {
+	Credential `json:",omitempty,inline"`
+	User       struct {
 		IDOrName
 		Password string `json:"password"`
 		Domain   struct {
@@ -127,7 +131,8 @@ func NewPasswordCredential(
 }
 
 type TokenCredential struct {
-	ID string `json:"id"`
+	Credential `json:",omitempty,inline"`
+	ID         string `json:"id"`
 }
 
 func NewTokenCredential(id string) *TokenCredential {
