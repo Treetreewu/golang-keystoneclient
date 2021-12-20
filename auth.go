@@ -62,7 +62,7 @@ func (m *AuthManager) AlterScope(scope model.Scope) (*req.Resp, error) {
 	return m.Authenticate(scope, model.NewTokenCredential(m.client.Token))
 }
 
-func (m *AuthManager) CheckToken() error {
-	_, err := m.Head("tokens")
-	return err
+func (m *AuthManager) TokenDetail() (*req.Resp, error) {
+	resp, err := m.Get("tokens", req.Header{"X-Subject-Token": m.client.Token})
+	return resp, err
 }

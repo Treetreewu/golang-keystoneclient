@@ -61,7 +61,7 @@ func (c *Client) SetToken(token string) {
 
 func (c *Client) Do(method, url string, vs ...interface{}) (resp *req.Resp, err error) {
 	//Override function sending request, add Keystone token header.
-	vs = append(vs, &req.Header{TokenHeader: c.Token})
+	vs = append(vs, req.Header{TokenHeader: c.Token})
 	resp, err = c.Req.Do(method, url, vs...)
 	if err == nil && resp.Response().StatusCode >= 400 {
 		err = errors.New("Request failed")
@@ -73,5 +73,6 @@ func (c *Client) AuthRequired() error {
 	if c.Token == "" {
 		return errors.New("Not authorized.")
 	}
-	return c.Auth.CheckToken()
+	_, err := c.Auth.TokenDetail()
+	return err
 }
