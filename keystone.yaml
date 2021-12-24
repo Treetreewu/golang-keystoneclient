@@ -5,10 +5,10 @@ info:
   title: Keystone API
   version: '3'
 servers:
-  - description: For local test
-    url: http://localhost
   - description: Service domain
     url: http://keystone-api.openstack.svc.cluster.local
+  - description: For local test
+    url: http://localhost
 paths:
   /v3/domains:
     get:

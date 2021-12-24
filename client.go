@@ -26,32 +26,40 @@ type Client struct {
 	*openapi.APIClient
 }
 
-func NewClient(config *openapi.Configuration) (*Client, error) {
-	return NewClientWithServerIndex(config, 0)
+func NewClientByToken(config *openapi.Configuration, token string) (*Client, error) {
+	client, err := NewClient(config)
+	if err != nil {
+		return nil, err
+	}
+	client.SetToken(token)
+	return client, nil
+}
+
+func NewDefaultClientByToken(token string) (*Client, error) {
+	return NewClientByToken(openapi.NewConfiguration(), token)
 }
 
 func NewDefaultClient() (*Client, error) {
-	config := openapi.NewConfiguration()
-	return NewClient(config)
+	return NewClient(openapi.NewConfiguration())
 }
 
-func NewClientWithServerIndex(config *openapi.Configuration, serverIndex int) (*Client, error) {
-	client := openapi.NewAPIClient(config)
-	rawURL, _ := config.Servers.URL(serverIndex, nil)
+func NewClient(config *openapi.Configuration) (*Client, error) {
+	rawURL, _ := config.Servers.URL(0, nil)
 
-	c := &Client{
+	client := &Client{
 		Req:       req.New(),
-		APIClient: client,
+		APIClient: openapi.NewAPIClient(config),
 	}
-	c.Req.SetClient(&http.Client{})
+	client.Req.SetClient(&http.Client{})
 	u, err := url.Parse(rawURL)
 	if err != nil {
 		return nil, errors.New("Invalid URL:")
 	}
 	u.Path = path.Join(u.Path, "v3")
-	c.BaseURL = u
-	c.Auth = NewAuthManager(c)
-	return c, nil
+	client.BaseURL = u
+
+	client.Auth = NewAuthManager(client)
+	return client, nil
 }
 
 func (c *Client) SetToken(token string) {
@@ -60,8 +68,15 @@ func (c *Client) SetToken(token string) {
 }
 
 func (c *Client) Do(method, url string, vs ...interface{}) (resp *req.Resp, err error) {
-	//Override function sending request, add Keystone token header.
-	vs = append(vs, req.Header{TokenHeader: c.Token})
+	vs = append(
+		vs,
+		// Mapping OpenAPI client configurations.
+		req.Header{"User-Agent": c.APIClient.GetConfig().UserAgent},
+		c.APIClient.GetConfig().DefaultHeader,
+		// Add Keystone token header.
+		req.Header{TokenHeader: c.Token},
+	)
+
 	resp, err = c.Req.Do(method, url, vs...)
 	if err == nil && resp.Response().StatusCode >= 400 {
 		err = errors.New("Request failed")

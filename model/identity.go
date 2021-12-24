@@ -103,6 +103,7 @@ type PasswordCredential struct {
 	} `json:"user"`
 }
 
+// NewPasswordCredential creates a password credential.
 func NewPasswordCredential(
 	userID *string, userName *string, password string,
 	domainID *string, domainName *string,

@@ -105,12 +105,12 @@ func NewConfiguration() *Configuration {
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
-				URL:         "http://localhost",
-				Description: "For local test",
-			},
-			{
 				URL:         "http://keystone-api.openstack.svc.cluster.local",
 				Description: "Service domain",
+			},
+			{
+				URL:         "http://localhost",
+				Description: "For local test",
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{},
