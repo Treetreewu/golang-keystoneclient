@@ -16,7 +16,7 @@ import (
 
 // ProjectUpdateRequest struct for ProjectUpdateRequest
 type ProjectUpdateRequest struct {
-	Domain *ProjectUpdate `json:"domain,omitempty"`
+	Project *ProjectUpdate `json:"project,omitempty"`
 }
 
 // NewProjectUpdateRequest instantiates a new ProjectUpdateRequest object
@@ -38,25 +38,25 @@ func NewProjectUpdateRequestWithDefaults() *ProjectUpdateRequest {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *ProjectUpdateRequest) GetDomain() ProjectUpdate {
-	if o == nil || o.Domain == nil {
+	if o == nil || o.Project == nil {
 		var ret ProjectUpdate
 		return ret
 	}
-	return *o.Domain
+	return *o.Project
 }
 
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectUpdateRequest) GetDomainOk() (*ProjectUpdate, bool) {
-	if o == nil || o.Domain == nil {
+	if o == nil || o.Project == nil {
 		return nil, false
 	}
-	return o.Domain, true
+	return o.Project, true
 }
 
 // HasDomain returns a boolean if a field has been set.
 func (o *ProjectUpdateRequest) HasDomain() bool {
-	if o != nil && o.Domain != nil {
+	if o != nil && o.Project != nil {
 		return true
 	}
 
@@ -65,13 +65,13 @@ func (o *ProjectUpdateRequest) HasDomain() bool {
 
 // SetDomain gets a reference to the given ProjectUpdate and assigns it to the Domain field.
 func (o *ProjectUpdateRequest) SetDomain(v ProjectUpdate) {
-	o.Domain = &v
+	o.Project = &v
 }
 
 func (o ProjectUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Domain != nil {
-		toSerialize["domain"] = o.Domain
+	if o.Project != nil {
+		toSerialize["domain"] = o.Project
 	}
 	return json.Marshal(toSerialize)
 }

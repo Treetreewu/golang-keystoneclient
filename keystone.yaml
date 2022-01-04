@@ -474,7 +474,7 @@ paths:
           application/json:
             schema:
               properties:
-                domain:
+                project:
                   properties:
                     name:
                       description: 'The new name of the project, which must be unique
