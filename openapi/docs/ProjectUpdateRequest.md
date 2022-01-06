@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Domain** | Pointer to [**ProjectUpdate**](ProjectUpdate.md) |  | [optional] 
+**Project** | [**ProjectUpdate**](ProjectUpdate.md) |  | 
 
 ## Methods
 
 ### NewProjectUpdateRequest
 
-`func NewProjectUpdateRequest() *ProjectUpdateRequest`
+`func NewProjectUpdateRequest(project ProjectUpdate, ) *ProjectUpdateRequest`
 
 NewProjectUpdateRequest instantiates a new ProjectUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,30 +25,25 @@ NewProjectUpdateRequestWithDefaults instantiates a new ProjectUpdateRequest obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetDomain
+### GetProject
 
-`func (o *ProjectUpdateRequest) GetDomain() ProjectUpdate`
+`func (o *ProjectUpdateRequest) GetProject() ProjectUpdate`
 
-GetDomain returns the Domain field if non-nil, zero value otherwise.
+GetProject returns the Project field if non-nil, zero value otherwise.
 
-### GetDomainOk
+### GetProjectOk
 
-`func (o *ProjectUpdateRequest) GetDomainOk() (*ProjectUpdate, bool)`
+`func (o *ProjectUpdateRequest) GetProjectOk() (*ProjectUpdate, bool)`
 
-GetDomainOk returns a tuple with the Domain field if it's non-nil, zero value otherwise
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDomain
+### SetProject
 
-`func (o *ProjectUpdateRequest) SetDomain(v ProjectUpdate)`
+`func (o *ProjectUpdateRequest) SetProject(v ProjectUpdate)`
 
-SetDomain sets Domain field to given value.
+SetProject sets Project field to given value.
 
-### HasDomain
-
-`func (o *ProjectUpdateRequest) HasDomain() bool`
-
-HasDomain returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

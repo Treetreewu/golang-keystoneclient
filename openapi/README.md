@@ -74,7 +74,7 @@ ctx = context.WithValue(context.Background(), sw.ContextOperationServerVariables
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://keystone-api.openstack.svc.cluster.local*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -82,10 +82,14 @@ Class | Method | HTTP request | Description
 *ApplicationCredentialApi* | [**DeleteApplicationCredential**](docs/ApplicationCredentialApi.md#deleteapplicationcredential) | **Delete** /v3/users/{user_id}/application_credentials/{application_credential_id} | 
 *ApplicationCredentialApi* | [**ListUserApplicationCredentials**](docs/ApplicationCredentialApi.md#listuserapplicationcredentials) | **Get** /v3/users/{user_id}/application_credentials | 
 *DomainApi* | [**CreateDomain**](docs/DomainApi.md#createdomain) | **Post** /v3/domains | 
+*DomainApi* | [**CreateDomainConfig**](docs/DomainApi.md#createdomainconfig) | **Put** /v3/domains/{domain_id}/config | 
 *DomainApi* | [**DeleteDomain**](docs/DomainApi.md#deletedomain) | **Delete** /v3/domains/{domain_id} | 
+*DomainApi* | [**DeleteDomainConfig**](docs/DomainApi.md#deletedomainconfig) | **Delete** /v3/domains/{domain_id}/config | 
 *DomainApi* | [**GetDomain**](docs/DomainApi.md#getdomain) | **Get** /v3/domains/{domain_id} | 
+*DomainApi* | [**GetDomainConfig**](docs/DomainApi.md#getdomainconfig) | **Get** /v3/domains/{domain_id}/config | 
 *DomainApi* | [**ListDomains**](docs/DomainApi.md#listdomains) | **Get** /v3/domains | 
 *DomainApi* | [**UpdateDomain**](docs/DomainApi.md#updatedomain) | **Patch** /v3/domains/{domain_id} | 
+*DomainApi* | [**UpdateDomainConfig**](docs/DomainApi.md#updatedomainconfig) | **Patch** /v3/domains/{domain_id}/config | 
 *GroupApi* | [**AddUser**](docs/GroupApi.md#adduser) | **Put** /v3/groups/{group_id}/users/{user_id} | 
 *GroupApi* | [**CheckUser**](docs/GroupApi.md#checkuser) | **Head** /v3/groups/{group_id}/users/{user_id} | 
 *GroupApi* | [**CreateGroup**](docs/GroupApi.md#creategroup) | **Post** /v3/groups | 
@@ -144,6 +148,10 @@ Class | Method | HTTP request | Description
  - [ApplicationCredentialResponse](docs/ApplicationCredentialResponse.md)
  - [ApplicationCredentialRole](docs/ApplicationCredentialRole.md)
  - [Domain](docs/Domain.md)
+ - [DomainConfig](docs/DomainConfig.md)
+ - [DomainConfigConfig](docs/DomainConfigConfig.md)
+ - [DomainConfigIdentity](docs/DomainConfigIdentity.md)
+ - [DomainConfigLDAP](docs/DomainConfigLDAP.md)
  - [DomainCreate](docs/DomainCreate.md)
  - [DomainCreateRequest](docs/DomainCreateRequest.md)
  - [DomainListResponse](docs/DomainListResponse.md)

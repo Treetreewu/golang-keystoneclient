@@ -1,6 +1,6 @@
 # \ProjectApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://keystone-api.openstack.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -320,7 +320,7 @@ import (
 
 func main() {
     projectId := "projectId_example" // string | The project ID.
-    projectUpdateRequest := *openapiclient.NewProjectUpdateRequest() // ProjectUpdateRequest |  (optional)
+    projectUpdateRequest := *openapiclient.NewProjectUpdateRequest(*openapiclient.NewProjectUpdate()) // ProjectUpdateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -16,15 +16,16 @@ import (
 
 // ProjectUpdateRequest struct for ProjectUpdateRequest
 type ProjectUpdateRequest struct {
-	Project *ProjectUpdate `json:"project,omitempty"`
+	Project ProjectUpdate `json:"project"`
 }
 
 // NewProjectUpdateRequest instantiates a new ProjectUpdateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectUpdateRequest() *ProjectUpdateRequest {
+func NewProjectUpdateRequest(project ProjectUpdate) *ProjectUpdateRequest {
 	this := ProjectUpdateRequest{}
+	this.Project = project
 	return &this
 }
 
@@ -36,42 +37,34 @@ func NewProjectUpdateRequestWithDefaults() *ProjectUpdateRequest {
 	return &this
 }
 
-// GetDomain returns the Domain field value if set, zero value otherwise.
-func (o *ProjectUpdateRequest) GetDomain() ProjectUpdate {
-	if o == nil || o.Project == nil {
+// GetProject returns the Project field value
+func (o *ProjectUpdateRequest) GetProject() ProjectUpdate {
+	if o == nil {
 		var ret ProjectUpdate
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
-func (o *ProjectUpdateRequest) GetDomainOk() (*ProjectUpdate, bool) {
-	if o == nil || o.Project == nil {
+func (o *ProjectUpdateRequest) GetProjectOk() (*ProjectUpdate, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasDomain returns a boolean if a field has been set.
-func (o *ProjectUpdateRequest) HasDomain() bool {
-	if o != nil && o.Project != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDomain gets a reference to the given ProjectUpdate and assigns it to the Domain field.
-func (o *ProjectUpdateRequest) SetDomain(v ProjectUpdate) {
-	o.Project = &v
+// SetProject sets field value
+func (o *ProjectUpdateRequest) SetProject(v ProjectUpdate) {
+	o.Project = v
 }
 
 func (o ProjectUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Project != nil {
-		toSerialize["domain"] = o.Project
+	if true {
+		toSerialize["project"] = o.Project
 	}
 	return json.Marshal(toSerialize)
 }

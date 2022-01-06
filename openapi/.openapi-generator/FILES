@@ -23,6 +23,10 @@ docs/ApplicationCredentialResponse.md
 docs/ApplicationCredentialRole.md
 docs/Domain.md
 docs/DomainApi.md
+docs/DomainConfig.md
+docs/DomainConfigConfig.md
+docs/DomainConfigIdentity.md
+docs/DomainConfigLDAP.md
 docs/DomainCreate.md
 docs/DomainCreateRequest.md
 docs/DomainListResponse.md
@@ -94,6 +98,10 @@ model_application_credential_list_response.go
 model_application_credential_response.go
 model_application_credential_role.go
 model_domain.go
+model_domain_config.go
+model_domain_config_config.go
+model_domain_config_identity.go
+model_domain_config_ldap.go
 model_domain_create.go
 model_domain_create_request.go
 model_domain_list_response.go

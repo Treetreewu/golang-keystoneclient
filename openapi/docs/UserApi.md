@@ -1,6 +1,6 @@
 # \UserApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://keystone-api.openstack.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

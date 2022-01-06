@@ -1,14 +1,18 @@
 # \DomainApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://keystone-api.openstack.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDomain**](DomainApi.md#CreateDomain) | **Post** /v3/domains | 
+[**CreateDomainConfig**](DomainApi.md#CreateDomainConfig) | **Put** /v3/domains/{domain_id}/config | 
 [**DeleteDomain**](DomainApi.md#DeleteDomain) | **Delete** /v3/domains/{domain_id} | 
+[**DeleteDomainConfig**](DomainApi.md#DeleteDomainConfig) | **Delete** /v3/domains/{domain_id}/config | 
 [**GetDomain**](DomainApi.md#GetDomain) | **Get** /v3/domains/{domain_id} | 
+[**GetDomainConfig**](DomainApi.md#GetDomainConfig) | **Get** /v3/domains/{domain_id}/config | 
 [**ListDomains**](DomainApi.md#ListDomains) | **Get** /v3/domains | 
 [**UpdateDomain**](DomainApi.md#UpdateDomain) | **Patch** /v3/domains/{domain_id} | 
+[**UpdateDomainConfig**](DomainApi.md#UpdateDomainConfig) | **Patch** /v3/domains/{domain_id}/config | 
 
 
 
@@ -63,6 +67,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DomainResponse**](DomainResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateDomainConfig
+
+> DomainConfig CreateDomainConfig(ctx, domainId).DomainConfig(domainConfig).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    domainId := "domainId_example" // string | The domain ID.
+    domainConfig := *openapiclient.NewDomainConfig(*openapiclient.NewDomainConfigConfig()) // DomainConfig |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DomainApi.CreateDomainConfig(context.Background(), domainId).DomainConfig(domainConfig).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DomainApi.CreateDomainConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDomainConfig`: DomainConfig
+    fmt.Fprintf(os.Stdout, "Response from `DomainApi.CreateDomainConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domainId** | **string** | The domain ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDomainConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **domainConfig** | [**DomainConfig**](DomainConfig.md) |  | 
+
+### Return type
+
+[**DomainConfig**](DomainConfig.md)
 
 ### Authorization
 
@@ -146,6 +222,74 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DeleteDomainConfig
+
+> DeleteDomainConfig(ctx, domainId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    domainId := "domainId_example" // string | The domain ID.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DomainApi.DeleteDomainConfig(context.Background(), domainId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DomainApi.DeleteDomainConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domainId** | **string** | The domain ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteDomainConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetDomain
 
 > DomainResponse GetDomain(ctx, domainId).Execute()
@@ -201,6 +345,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DomainResponse**](DomainResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDomainConfig
+
+> DomainConfig GetDomainConfig(ctx, domainId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    domainId := "domainId_example" // string | The domain ID.
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DomainApi.GetDomainConfig(context.Background(), domainId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DomainApi.GetDomainConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDomainConfig`: DomainConfig
+    fmt.Fprintf(os.Stdout, "Response from `DomainApi.GetDomainConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domainId** | **string** | The domain ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDomainConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DomainConfig**](DomainConfig.md)
 
 ### Authorization
 
@@ -343,6 +557,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DomainResponse**](DomainResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateDomainConfig
+
+> DomainConfig UpdateDomainConfig(ctx, domainId).DomainConfig(domainConfig).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    domainId := "domainId_example" // string | The domain ID.
+    domainConfig := *openapiclient.NewDomainConfig(*openapiclient.NewDomainConfigConfig()) // DomainConfig |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DomainApi.UpdateDomainConfig(context.Background(), domainId).DomainConfig(domainConfig).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DomainApi.UpdateDomainConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateDomainConfig`: DomainConfig
+    fmt.Fprintf(os.Stdout, "Response from `DomainApi.UpdateDomainConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domainId** | **string** | The domain ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateDomainConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **domainConfig** | [**DomainConfig**](DomainConfig.md) |  | 
+
+### Return type
+
+[**DomainConfig**](DomainConfig.md)
 
 ### Authorization
 

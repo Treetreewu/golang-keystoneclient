@@ -222,6 +222,134 @@ paths:
           $ref: '#/components/responses/503'
       tags:
         - domain
+  /v3/domains/{domain_id}/config:
+    parameters:
+      - description: The domain ID.
+        in: path
+        name: domain_id
+        required: true
+        schema:
+          type: string
+    put:
+      description: Creates a domain configuration.
+      operationId: create_domain_config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/domain_config"
+      responses:
+        '200':
+          description: Domain configuration request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/domain_config"
+        '201':
+          description: Resource was created and is ready to use.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '413':
+          $ref: '#/components/responses/413'
+        '503':
+          $ref: '#/components/responses/503'
+      tags:
+        - domain
+    patch:
+      description: Updates a domain configuration.
+      operationId: update_domain_config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/domain_config"
+      responses:
+        '200':
+          description: Request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/domain_config"
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '413':
+          $ref: '#/components/responses/413'
+        '415':
+          $ref: '#/components/responses/415'
+        '503':
+          $ref: '#/components/responses/503'
+      tags:
+        - domain
+    get:
+      description: Shows details for a domain configuration.
+      operationId: get_domain_config
+      responses:
+        '200':
+          description: Request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/domain_config"
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '413':
+          $ref: '#/components/responses/413'
+        '503':
+          $ref: '#/components/responses/503'
+      tags:
+        - domain
+    delete:
+      description: Deletes a domain configuration.
+      operationId: delete_domain_config
+      responses:
+        '204':
+          description: The server has fulfilled the request.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '413':
+          $ref: '#/components/responses/413'
+        '415':
+          $ref: '#/components/responses/415'
+        '503':
+          $ref: '#/components/responses/503'
+      tags:
+        - domain
   /v3/projects:
     get:
       operationId: list_projects
@@ -2272,7 +2400,6 @@ components:
             properties:
               application_credential:
                 $ref: '#/components/schemas/application_credential'
-
   schemas:
     domain:
       properties:
@@ -2297,6 +2424,35 @@ components:
           items:
             type: string
       type: object
+    domain_config:
+      required:
+        - config
+      type: object
+      properties:
+        config:
+          title: DomainConfigConfig
+          type: object
+          properties:
+            identity:
+              type: object
+              title: DomainConfigIdentity
+              properties:
+                driver:
+                  type: string
+                  description: The Identity backend driver.
+            ldap:
+              description: Required to set the LDAP group configuration options.
+              type: object
+              title: DomainConfigLDAP
+              properties:
+                url:
+                  type: string
+                  description: The LDAP URL.
+                  example: ldap://myldap.com:389/
+                user_tree_dn:
+                  type: string
+                  description: The base distinguished name (DN) of LDAP, from where all users can be reached.
+                  example: ou=Users,dc=root,dc=org
     id_and_name:
       type: object
       properties:
