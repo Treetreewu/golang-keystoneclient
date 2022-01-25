@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The role name. | [optional] 
 **DomainId** | Pointer to **NullableString** | The ID of the domain. | [optional] 
 **Links** | Pointer to [**SelfLink**](SelfLink.md) |  | [optional] 
+**Description** | Pointer to **string** | The role description. | [optional] 
 
 ## Methods
 
@@ -137,6 +138,31 @@ SetLinks sets Links field to given value.
 `func (o *Role) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *Role) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Role) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Role) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Role) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

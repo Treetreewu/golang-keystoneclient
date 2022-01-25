@@ -2545,6 +2545,9 @@ components:
           description: The ID of the domain.
         links:
           $ref: '#/components/schemas/self_link'
+        description:
+          type: string
+          description: The role description.
       type: object
     self_link:
       description: The links to the resource.

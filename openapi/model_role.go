@@ -23,6 +23,8 @@ type Role struct {
 	// The ID of the domain.
 	DomainId NullableString `json:"domain_id,omitempty"`
 	Links    *SelfLink      `json:"links,omitempty"`
+	// The role description.
+	Description *string `json:"description,omitempty"`
 }
 
 // NewRole instantiates a new Role object
@@ -181,6 +183,38 @@ func (o *Role) SetLinks(v SelfLink) {
 	o.Links = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Role) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Role) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Role) SetDescription(v string) {
+	o.Description = &v
+}
+
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -194,6 +228,9 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	}
 	if o.Links != nil {
 		toSerialize["links"] = o.Links
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	return json.Marshal(toSerialize)
 }
