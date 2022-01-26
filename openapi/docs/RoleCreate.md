@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The role name. | 
+**Type** | Pointer to **string** | The role type. | [optional] 
 **DomainId** | Pointer to **string** | The ID of the domain of the role. | [optional] 
 **Description** | Pointer to **string** | Add description about the role. | [optional] 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetType
+
+`func (o *RoleCreate) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RoleCreate) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RoleCreate) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *RoleCreate) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetDomainId
 

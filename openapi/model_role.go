@@ -25,6 +25,8 @@ type Role struct {
 	Links    *SelfLink      `json:"links,omitempty"`
 	// The role description.
 	Description *string `json:"description,omitempty"`
+	// The role type in keystone.roles.extra.
+	Type *string `json:"type,omitempty"`
 }
 
 // NewRole instantiates a new Role object
@@ -215,6 +217,38 @@ func (o *Role) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Role) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Role) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Role) SetType(v string) {
+	o.Type = &v
+}
+
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -231,6 +265,9 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

@@ -939,6 +939,9 @@ paths:
                     name:
                       type: string
                       description: The role name.
+                    type:
+                      type: string
+                      description: The role type.
                     domain_id:
                       type: string
                       description: The ID of the domain of the role.
@@ -2548,6 +2551,9 @@ components:
         description:
           type: string
           description: The role description.
+        type:
+          type: string
+          description: The role type in keystone.roles.extra.
       type: object
     self_link:
       description: The links to the resource.
