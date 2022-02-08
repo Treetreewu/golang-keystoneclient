@@ -647,7 +647,7 @@ No authorization required
 
 ## VerifyDomainConfig
 
-> interface{} VerifyDomainConfig(ctx, domainId).DomainConfigVerifyRequest(domainConfigVerifyRequest).Execute()
+> interface{} VerifyDomainConfig(ctx, domainId).DomainConfig(domainConfig).Execute()
 
 
 
@@ -667,11 +667,11 @@ import (
 
 func main() {
     domainId := "domainId_example" // string | The domain ID.
-    domainConfigVerifyRequest := *openapiclient.NewDomainConfigVerifyRequest() // DomainConfigVerifyRequest |  (optional)
+    domainConfig := *openapiclient.NewDomainConfig(*openapiclient.NewDomainConfigConfig()) // DomainConfig |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DomainApi.VerifyDomainConfig(context.Background(), domainId).DomainConfigVerifyRequest(domainConfigVerifyRequest).Execute()
+    resp, r, err := api_client.DomainApi.VerifyDomainConfig(context.Background(), domainId).DomainConfig(domainConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainApi.VerifyDomainConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -697,7 +697,7 @@ Other parameters are passed through a pointer to a apiVerifyDomainConfigRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **domainConfigVerifyRequest** | [**DomainConfigVerifyRequest**](DomainConfigVerifyRequest.md) |  | 
+ **domainConfig** | [**DomainConfig**](DomainConfig.md) |  | 
 
 ### Return type
 

@@ -20,6 +20,17 @@ type DomainConfigLDAP struct {
 	Url *string `json:"url,omitempty"`
 	// The base distinguished name (DN) of LDAP, from where all users can be reached.
 	UserTreeDn *string `json:"user_tree_dn,omitempty"`
+	User       *string `json:"user,omitempty"`
+	Password   *string `json:"password,omitempty"`
+	// 定义了在搜索基中搜索的深度。值“one”表示对下面紧接基准对象的对象搜索，但不包括基准对象本身。 值“sub”表示同时搜索基准对象本身和它下面的整个子树。
+	QueryScope        *string `json:"query_scope,omitempty"`
+	UserObjectclass   *string `json:"user_objectclass,omitempty"`
+	UserIdAttribute   *string `json:"user_id_attribute,omitempty"`
+	UserNameAttribute *string `json:"user_name_attribute,omitempty"`
+	UserMailAttribute *string `json:"user_mail_attribute,omitempty"`
+	// set 0 to disable pagination
+	PageSize   *int32  `json:"page_size,omitempty"`
+	UserFilter *string `json:"user_filter,omitempty"`
 }
 
 // NewDomainConfigLDAP instantiates a new DomainConfigLDAP object
@@ -28,6 +39,14 @@ type DomainConfigLDAP struct {
 // will change when the set of required properties is changed
 func NewDomainConfigLDAP() *DomainConfigLDAP {
 	this := DomainConfigLDAP{}
+	var userObjectclass string = "organizationalPerson"
+	this.UserObjectclass = &userObjectclass
+	var userIdAttribute string = "cn"
+	this.UserIdAttribute = &userIdAttribute
+	var userNameAttribute string = "cn"
+	this.UserNameAttribute = &userNameAttribute
+	var userMailAttribute string = "mail"
+	this.UserMailAttribute = &userMailAttribute
 	return &this
 }
 
@@ -36,6 +55,14 @@ func NewDomainConfigLDAP() *DomainConfigLDAP {
 // but it doesn't guarantee that properties required by API are set
 func NewDomainConfigLDAPWithDefaults() *DomainConfigLDAP {
 	this := DomainConfigLDAP{}
+	var userObjectclass string = "organizationalPerson"
+	this.UserObjectclass = &userObjectclass
+	var userIdAttribute string = "cn"
+	this.UserIdAttribute = &userIdAttribute
+	var userNameAttribute string = "cn"
+	this.UserNameAttribute = &userNameAttribute
+	var userMailAttribute string = "mail"
+	this.UserMailAttribute = &userMailAttribute
 	return &this
 }
 
@@ -103,6 +130,294 @@ func (o *DomainConfigLDAP) SetUserTreeDn(v string) {
 	o.UserTreeDn = &v
 }
 
+// GetUser returns the User field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetUser() string {
+	if o == nil || o.User == nil {
+		var ret string
+		return ret
+	}
+	return *o.User
+}
+
+// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetUserOk() (*string, bool) {
+	if o == nil || o.User == nil {
+		return nil, false
+	}
+	return o.User, true
+}
+
+// HasUser returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasUser() bool {
+	if o != nil && o.User != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUser gets a reference to the given string and assigns it to the User field.
+func (o *DomainConfigLDAP) SetUser(v string) {
+	o.User = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *DomainConfigLDAP) SetPassword(v string) {
+	o.Password = &v
+}
+
+// GetQueryScope returns the QueryScope field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetQueryScope() string {
+	if o == nil || o.QueryScope == nil {
+		var ret string
+		return ret
+	}
+	return *o.QueryScope
+}
+
+// GetQueryScopeOk returns a tuple with the QueryScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetQueryScopeOk() (*string, bool) {
+	if o == nil || o.QueryScope == nil {
+		return nil, false
+	}
+	return o.QueryScope, true
+}
+
+// HasQueryScope returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasQueryScope() bool {
+	if o != nil && o.QueryScope != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetQueryScope gets a reference to the given string and assigns it to the QueryScope field.
+func (o *DomainConfigLDAP) SetQueryScope(v string) {
+	o.QueryScope = &v
+}
+
+// GetUserObjectclass returns the UserObjectclass field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetUserObjectclass() string {
+	if o == nil || o.UserObjectclass == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserObjectclass
+}
+
+// GetUserObjectclassOk returns a tuple with the UserObjectclass field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetUserObjectclassOk() (*string, bool) {
+	if o == nil || o.UserObjectclass == nil {
+		return nil, false
+	}
+	return o.UserObjectclass, true
+}
+
+// HasUserObjectclass returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasUserObjectclass() bool {
+	if o != nil && o.UserObjectclass != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserObjectclass gets a reference to the given string and assigns it to the UserObjectclass field.
+func (o *DomainConfigLDAP) SetUserObjectclass(v string) {
+	o.UserObjectclass = &v
+}
+
+// GetUserIdAttribute returns the UserIdAttribute field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetUserIdAttribute() string {
+	if o == nil || o.UserIdAttribute == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserIdAttribute
+}
+
+// GetUserIdAttributeOk returns a tuple with the UserIdAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetUserIdAttributeOk() (*string, bool) {
+	if o == nil || o.UserIdAttribute == nil {
+		return nil, false
+	}
+	return o.UserIdAttribute, true
+}
+
+// HasUserIdAttribute returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasUserIdAttribute() bool {
+	if o != nil && o.UserIdAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserIdAttribute gets a reference to the given string and assigns it to the UserIdAttribute field.
+func (o *DomainConfigLDAP) SetUserIdAttribute(v string) {
+	o.UserIdAttribute = &v
+}
+
+// GetUserNameAttribute returns the UserNameAttribute field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetUserNameAttribute() string {
+	if o == nil || o.UserNameAttribute == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserNameAttribute
+}
+
+// GetUserNameAttributeOk returns a tuple with the UserNameAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetUserNameAttributeOk() (*string, bool) {
+	if o == nil || o.UserNameAttribute == nil {
+		return nil, false
+	}
+	return o.UserNameAttribute, true
+}
+
+// HasUserNameAttribute returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasUserNameAttribute() bool {
+	if o != nil && o.UserNameAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserNameAttribute gets a reference to the given string and assigns it to the UserNameAttribute field.
+func (o *DomainConfigLDAP) SetUserNameAttribute(v string) {
+	o.UserNameAttribute = &v
+}
+
+// GetUserMailAttribute returns the UserMailAttribute field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetUserMailAttribute() string {
+	if o == nil || o.UserMailAttribute == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserMailAttribute
+}
+
+// GetUserMailAttributeOk returns a tuple with the UserMailAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetUserMailAttributeOk() (*string, bool) {
+	if o == nil || o.UserMailAttribute == nil {
+		return nil, false
+	}
+	return o.UserMailAttribute, true
+}
+
+// HasUserMailAttribute returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasUserMailAttribute() bool {
+	if o != nil && o.UserMailAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserMailAttribute gets a reference to the given string and assigns it to the UserMailAttribute field.
+func (o *DomainConfigLDAP) SetUserMailAttribute(v string) {
+	o.UserMailAttribute = &v
+}
+
+// GetPageSize returns the PageSize field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetPageSize() int32 {
+	if o == nil || o.PageSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PageSize
+}
+
+// GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetPageSizeOk() (*int32, bool) {
+	if o == nil || o.PageSize == nil {
+		return nil, false
+	}
+	return o.PageSize, true
+}
+
+// HasPageSize returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasPageSize() bool {
+	if o != nil && o.PageSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPageSize gets a reference to the given int32 and assigns it to the PageSize field.
+func (o *DomainConfigLDAP) SetPageSize(v int32) {
+	o.PageSize = &v
+}
+
+// GetUserFilter returns the UserFilter field value if set, zero value otherwise.
+func (o *DomainConfigLDAP) GetUserFilter() string {
+	if o == nil || o.UserFilter == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserFilter
+}
+
+// GetUserFilterOk returns a tuple with the UserFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLDAP) GetUserFilterOk() (*string, bool) {
+	if o == nil || o.UserFilter == nil {
+		return nil, false
+	}
+	return o.UserFilter, true
+}
+
+// HasUserFilter returns a boolean if a field has been set.
+func (o *DomainConfigLDAP) HasUserFilter() bool {
+	if o != nil && o.UserFilter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserFilter gets a reference to the given string and assigns it to the UserFilter field.
+func (o *DomainConfigLDAP) SetUserFilter(v string) {
+	o.UserFilter = &v
+}
+
 func (o DomainConfigLDAP) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Url != nil {
@@ -110,6 +425,33 @@ func (o DomainConfigLDAP) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserTreeDn != nil {
 		toSerialize["user_tree_dn"] = o.UserTreeDn
+	}
+	if o.User != nil {
+		toSerialize["user"] = o.User
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
+	if o.QueryScope != nil {
+		toSerialize["query_scope"] = o.QueryScope
+	}
+	if o.UserObjectclass != nil {
+		toSerialize["user_objectclass"] = o.UserObjectclass
+	}
+	if o.UserIdAttribute != nil {
+		toSerialize["user_id_attribute"] = o.UserIdAttribute
+	}
+	if o.UserNameAttribute != nil {
+		toSerialize["user_name_attribute"] = o.UserNameAttribute
+	}
+	if o.UserMailAttribute != nil {
+		toSerialize["user_mail_attribute"] = o.UserMailAttribute
+	}
+	if o.PageSize != nil {
+		toSerialize["page_size"] = o.PageSize
+	}
+	if o.UserFilter != nil {
+		toSerialize["user_filter"] = o.UserFilter
 	}
 	return json.Marshal(toSerialize)
 }
