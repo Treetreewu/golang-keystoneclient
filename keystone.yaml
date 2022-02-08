@@ -350,6 +350,68 @@ paths:
           $ref: '#/components/responses/503'
       tags:
         - domain
+  /v3/domains/{domain_id}/config/verify:
+    parameters:
+      - description: The domain ID.
+        in: path
+        name: domain_id
+        required: true
+        schema:
+          type: string
+    post:
+      tags:
+        - domain
+      operationId: verify_domain_config
+      description: Verify LDAP domain config. (Easystack extension)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: DomainConfigVerifyRequest
+              properties:
+                domain_ldap_config:
+                  type: object
+                  title: DomainLDAPConfig
+                  properties:
+                    url:
+                      type: string
+                      format: uri
+                      example: ldap://127.0.0.1:389/
+                    query_scope:
+                      type: string
+                      example: one
+                    user:
+                      type: string
+                      example: cn=root,dc=openstack,dc=com
+                    user_objectclass:
+                      type: string
+                      example: organizationalPerson
+                    password:
+                      type: string
+                      format: password
+                    user_tree_dn:
+                      type: string
+                      example: ou=People,dc=openstack,dc=com
+                    user_id_attribute:
+                      type: string
+                      example: cn
+      responses:
+        '200':
+          description: Request was successful.
+          content:
+            application/json:
+              schema:
+                properties:
+                  domain_ldap_config:
+                    type: object
+                    title: DomainConfigVerifyResponse
+                    properties:
+                      user_count:
+                        type: integer
+        '400':
+          description: Invalid config.
+
   /v3/projects:
     get:
       operationId: list_projects

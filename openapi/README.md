@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *DomainApi* | [**ListDomains**](docs/DomainApi.md#listdomains) | **Get** /v3/domains | 
 *DomainApi* | [**UpdateDomain**](docs/DomainApi.md#updatedomain) | **Patch** /v3/domains/{domain_id} | 
 *DomainApi* | [**UpdateDomainConfig**](docs/DomainApi.md#updatedomainconfig) | **Patch** /v3/domains/{domain_id}/config | 
+*DomainApi* | [**VerifyDomainConfig**](docs/DomainApi.md#verifydomainconfig) | **Post** /v3/domains/{domain_id}/config/verify | 
 *GroupApi* | [**AddUser**](docs/GroupApi.md#adduser) | **Put** /v3/groups/{group_id}/users/{user_id} | 
 *GroupApi* | [**CheckUser**](docs/GroupApi.md#checkuser) | **Head** /v3/groups/{group_id}/users/{user_id} | 
 *GroupApi* | [**CreateGroup**](docs/GroupApi.md#creategroup) | **Post** /v3/groups | 
@@ -152,8 +153,10 @@ Class | Method | HTTP request | Description
  - [DomainConfigConfig](docs/DomainConfigConfig.md)
  - [DomainConfigIdentity](docs/DomainConfigIdentity.md)
  - [DomainConfigLDAP](docs/DomainConfigLDAP.md)
+ - [DomainConfigVerifyRequest](docs/DomainConfigVerifyRequest.md)
  - [DomainCreate](docs/DomainCreate.md)
  - [DomainCreateRequest](docs/DomainCreateRequest.md)
+ - [DomainLDAPConfig](docs/DomainLDAPConfig.md)
  - [DomainListResponse](docs/DomainListResponse.md)
  - [DomainResponse](docs/DomainResponse.md)
  - [DomainUpdate](docs/DomainUpdate.md)
