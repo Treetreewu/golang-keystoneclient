@@ -16,7 +16,7 @@ import (
 
 // DomainConfigVerifyRequest struct for DomainConfigVerifyRequest
 type DomainConfigVerifyRequest struct {
-	Config *DomainConfigLdap `json:"config,omitempty"`
+	DomainLdapConfig *DomainConfigLdap `json:"domain_ldap_config,omitempty"`
 }
 
 // NewDomainConfigVerifyRequest instantiates a new DomainConfigVerifyRequest object
@@ -36,42 +36,42 @@ func NewDomainConfigVerifyRequestWithDefaults() *DomainConfigVerifyRequest {
 	return &this
 }
 
-// GetConfig returns the Config field value if set, zero value otherwise.
-func (o *DomainConfigVerifyRequest) GetConfig() DomainConfigLdap {
-	if o == nil || o.Config == nil {
+// GetDomainLdapConfig returns the DomainLdapConfig field value if set, zero value otherwise.
+func (o *DomainConfigVerifyRequest) GetDomainLdapConfig() DomainConfigLdap {
+	if o == nil || o.DomainLdapConfig == nil {
 		var ret DomainConfigLdap
 		return ret
 	}
-	return *o.Config
+	return *o.DomainLdapConfig
 }
 
-// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// GetDomainLdapConfigOk returns a tuple with the DomainLdapConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainConfigVerifyRequest) GetConfigOk() (*DomainConfigLdap, bool) {
-	if o == nil || o.Config == nil {
+func (o *DomainConfigVerifyRequest) GetDomainLdapConfigOk() (*DomainConfigLdap, bool) {
+	if o == nil || o.DomainLdapConfig == nil {
 		return nil, false
 	}
-	return o.Config, true
+	return o.DomainLdapConfig, true
 }
 
-// HasConfig returns a boolean if a field has been set.
-func (o *DomainConfigVerifyRequest) HasConfig() bool {
-	if o != nil && o.Config != nil {
+// HasDomainLdapConfig returns a boolean if a field has been set.
+func (o *DomainConfigVerifyRequest) HasDomainLdapConfig() bool {
+	if o != nil && o.DomainLdapConfig != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetConfig gets a reference to the given DomainConfigLdap and assigns it to the Config field.
-func (o *DomainConfigVerifyRequest) SetConfig(v DomainConfigLdap) {
-	o.Config = &v
+// SetDomainLdapConfig gets a reference to the given DomainConfigLdap and assigns it to the DomainLdapConfig field.
+func (o *DomainConfigVerifyRequest) SetDomainLdapConfig(v DomainConfigLdap) {
+	o.DomainLdapConfig = &v
 }
 
 func (o DomainConfigVerifyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
+	if o.DomainLdapConfig != nil {
+		toSerialize["domain_ldap_config"] = o.DomainLdapConfig
 	}
 	return json.Marshal(toSerialize)
 }

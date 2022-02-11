@@ -370,7 +370,7 @@ paths:
               type: object
               title: DomainConfigVerifyRequest
               properties:
-                config:
+                domain_ldap_config:
                   $ref: '#/components/schemas/domain_config_ldap'
       responses:
         '200':

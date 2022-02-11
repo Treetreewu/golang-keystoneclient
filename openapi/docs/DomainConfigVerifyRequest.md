@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to [**DomainConfigLdap**](DomainConfigLdap.md) |  | [optional] 
+**DomainLdapConfig** | Pointer to [**DomainConfigLdap**](DomainConfigLdap.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewDomainConfigVerifyRequestWithDefaults instantiates a new DomainConfigVerifyRe
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetConfig
+### GetDomainLdapConfig
 
-`func (o *DomainConfigVerifyRequest) GetConfig() DomainConfigLdap`
+`func (o *DomainConfigVerifyRequest) GetDomainLdapConfig() DomainConfigLdap`
 
-GetConfig returns the Config field if non-nil, zero value otherwise.
+GetDomainLdapConfig returns the DomainLdapConfig field if non-nil, zero value otherwise.
 
-### GetConfigOk
+### GetDomainLdapConfigOk
 
-`func (o *DomainConfigVerifyRequest) GetConfigOk() (*DomainConfigLdap, bool)`
+`func (o *DomainConfigVerifyRequest) GetDomainLdapConfigOk() (*DomainConfigLdap, bool)`
 
-GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+GetDomainLdapConfigOk returns a tuple with the DomainLdapConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfig
+### SetDomainLdapConfig
 
-`func (o *DomainConfigVerifyRequest) SetConfig(v DomainConfigLdap)`
+`func (o *DomainConfigVerifyRequest) SetDomainLdapConfig(v DomainConfigLdap)`
 
-SetConfig sets Config field to given value.
+SetDomainLdapConfig sets DomainLdapConfig field to given value.
 
-### HasConfig
+### HasDomainLdapConfig
 
-`func (o *DomainConfigVerifyRequest) HasConfig() bool`
+`func (o *DomainConfigVerifyRequest) HasDomainLdapConfig() bool`
 
-HasConfig returns a boolean if a field has been set.
+HasDomainLdapConfig returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
