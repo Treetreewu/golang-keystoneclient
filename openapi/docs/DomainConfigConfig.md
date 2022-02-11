@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Identity** | Pointer to [**DomainConfigIdentity**](DomainConfigIdentity.md) |  | [optional] 
-**Ldap** | Pointer to [**DomainConfigLDAP**](DomainConfigLDAP.md) |  | [optional] 
+**Ldap** | Pointer to [**DomainConfigLdap**](DomainConfigLdap.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasIdentity returns a boolean if a field has been set.
 
 ### GetLdap
 
-`func (o *DomainConfigConfig) GetLdap() DomainConfigLDAP`
+`func (o *DomainConfigConfig) GetLdap() DomainConfigLdap`
 
 GetLdap returns the Ldap field if non-nil, zero value otherwise.
 
 ### GetLdapOk
 
-`func (o *DomainConfigConfig) GetLdapOk() (*DomainConfigLDAP, bool)`
+`func (o *DomainConfigConfig) GetLdapOk() (*DomainConfigLdap, bool)`
 
 GetLdapOk returns a tuple with the Ldap field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLdap
 
-`func (o *DomainConfigConfig) SetLdap(v DomainConfigLDAP)`
+`func (o *DomainConfigConfig) SetLdap(v DomainConfigLdap)`
 
 SetLdap sets Ldap field to given value.
 

@@ -17,7 +17,7 @@ import (
 // DomainConfigConfig struct for DomainConfigConfig
 type DomainConfigConfig struct {
 	Identity *DomainConfigIdentity `json:"identity,omitempty"`
-	Ldap     *DomainConfigLDAP     `json:"ldap,omitempty"`
+	Ldap     *DomainConfigLdap     `json:"ldap,omitempty"`
 }
 
 // NewDomainConfigConfig instantiates a new DomainConfigConfig object
@@ -70,9 +70,9 @@ func (o *DomainConfigConfig) SetIdentity(v DomainConfigIdentity) {
 }
 
 // GetLdap returns the Ldap field value if set, zero value otherwise.
-func (o *DomainConfigConfig) GetLdap() DomainConfigLDAP {
+func (o *DomainConfigConfig) GetLdap() DomainConfigLdap {
 	if o == nil || o.Ldap == nil {
-		var ret DomainConfigLDAP
+		var ret DomainConfigLdap
 		return ret
 	}
 	return *o.Ldap
@@ -80,7 +80,7 @@ func (o *DomainConfigConfig) GetLdap() DomainConfigLDAP {
 
 // GetLdapOk returns a tuple with the Ldap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainConfigConfig) GetLdapOk() (*DomainConfigLDAP, bool) {
+func (o *DomainConfigConfig) GetLdapOk() (*DomainConfigLdap, bool) {
 	if o == nil || o.Ldap == nil {
 		return nil, false
 	}
@@ -96,8 +96,8 @@ func (o *DomainConfigConfig) HasLdap() bool {
 	return false
 }
 
-// SetLdap gets a reference to the given DomainConfigLDAP and assigns it to the Ldap field.
-func (o *DomainConfigConfig) SetLdap(v DomainConfigLDAP) {
+// SetLdap gets a reference to the given DomainConfigLdap and assigns it to the Ldap field.
+func (o *DomainConfigConfig) SetLdap(v DomainConfigLdap) {
 	o.Ldap = &v
 }
 

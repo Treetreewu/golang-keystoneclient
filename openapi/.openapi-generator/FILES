@@ -26,7 +26,8 @@ docs/DomainApi.md
 docs/DomainConfig.md
 docs/DomainConfigConfig.md
 docs/DomainConfigIdentity.md
-docs/DomainConfigLDAP.md
+docs/DomainConfigLdap.md
+docs/DomainConfigVerifyRequest.md
 docs/DomainConfigVerifyResponse.md
 docs/DomainCreate.md
 docs/DomainCreateRequest.md
@@ -104,6 +105,7 @@ model_domain_config.go
 model_domain_config_config.go
 model_domain_config_identity.go
 model_domain_config_ldap.go
+model_domain_config_verify_request.go
 model_domain_config_verify_response.go
 model_domain_create.go
 model_domain_create_request.go

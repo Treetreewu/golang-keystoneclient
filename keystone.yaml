@@ -367,7 +367,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/domain_config'
+              type: object
+              title: DomainConfigVerifyRequest
+              properties:
+                config:
+                  $ref: '#/components/schemas/domain_config_ldap'
       responses:
         '200':
           description: Request was successful.
@@ -2480,50 +2484,51 @@ components:
                   type: string
                   description: The Identity backend driver.
             ldap:
-              description: Required to set the LDAP group configuration options.
-              type: object
-              title: DomainConfigLDAP
-              properties:
-                url:
-                  type: string
-                  description: The LDAP URL.
-                  example: ldap://myldap.com:389/
-                user_tree_dn:
-                  type: string
-                  description: The base distinguished name (DN) of LDAP, from where all users can be reached.
-                  example: ou=Users,dc=root,dc=org
-                user:
-                  type: string
-                password:
-                  type: string
-                  format: password
-                query_scope:
-                  type: string
-                  example: one
-                  description: 定义了在搜索基中搜索的深度。值“one”表示对下面紧接基准对象的对象搜索，但不包括基准对象本身。
-                    值“sub”表示同时搜索基准对象本身和它下面的整个子树。
-                user_objectclass:
-                  type: string
-                  default: organizationalPerson
-                  example: organizationalPerson
-                user_id_attribute:
-                  type: string
-                  default: cn
-                  example: cn
-                user_name_attribute:
-                  type: string
-                  example: cn
-                  default: cn
-                user_mail_attribute:
-                  type: string
-                  example: mail
-                  default: mail
-                page_size:
-                  type: integer
-                  example: 0
-                  description: set 0 to disable pagination
-                user_filter:
-                  type: string
+              $ref: '#/components/schemas/domain_config_ldap'
+    domain_config_ldap:
+      type: object
+      title: DomainConfigLDAP
+      properties:
+        url:
+          type: string
+          description: The LDAP URL.
+          example: ldap://myldap.com:389/
+        user_tree_dn:
+          type: string
+          description: The base distinguished name (DN) of LDAP, from where all users can be reached.
+          example: ou=Users,dc=root,dc=org
+        user:
+          type: string
+        password:
+          type: string
+          format: password
+        query_scope:
+          type: string
+          example: one
+          description: 定义了在搜索基中搜索的深度。值“one”表示对下面紧接基准对象的对象搜索，但不包括基准对象本身。
+            值“sub”表示同时搜索基准对象本身和它下面的整个子树。
+        user_objectclass:
+          type: string
+          default: organizationalPerson
+          example: organizationalPerson
+        user_id_attribute:
+          type: string
+          default: cn
+          example: cn
+        user_name_attribute:
+          type: string
+          example: cn
+          default: cn
+        user_mail_attribute:
+          type: string
+          example: mail
+          default: mail
+        page_size:
+          type: integer
+          example: 0
+          description: set 0 to disable pagination
+        user_filter:
+          type: string
     id_and_name:
       type: object
       properties:

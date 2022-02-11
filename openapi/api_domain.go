@@ -1726,14 +1726,14 @@ func (a *DomainApiService) UpdateDomainConfigExecute(r ApiUpdateDomainConfigRequ
 }
 
 type ApiVerifyDomainConfigRequest struct {
-	ctx          _context.Context
-	ApiService   *DomainApiService
-	domainId     string
-	domainConfig *DomainConfig
+	ctx                       _context.Context
+	ApiService                *DomainApiService
+	domainId                  string
+	domainConfigVerifyRequest *DomainConfigVerifyRequest
 }
 
-func (r ApiVerifyDomainConfigRequest) DomainConfig(domainConfig DomainConfig) ApiVerifyDomainConfigRequest {
-	r.domainConfig = &domainConfig
+func (r ApiVerifyDomainConfigRequest) DomainConfigVerifyRequest(domainConfigVerifyRequest DomainConfigVerifyRequest) ApiVerifyDomainConfigRequest {
+	r.domainConfigVerifyRequest = &domainConfigVerifyRequest
 	return r
 }
 
@@ -1800,7 +1800,7 @@ func (a *DomainApiService) VerifyDomainConfigExecute(r ApiVerifyDomainConfigRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.domainConfig
+	localVarPostBody = r.domainConfigVerifyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
