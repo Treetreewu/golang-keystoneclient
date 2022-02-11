@@ -14,30 +14,30 @@ import (
 	"encoding/json"
 )
 
-// DomainConfigVerifyRequest struct for DomainConfigVerifyRequest
-type DomainConfigVerifyRequest struct {
+// DomainConfigVerifyResponse struct for DomainConfigVerifyResponse
+type DomainConfigVerifyResponse struct {
 	DomainLdapConfig *DomainLDAPConfig `json:"domain_ldap_config,omitempty"`
 }
 
-// NewDomainConfigVerifyRequest instantiates a new DomainConfigVerifyRequest object
+// NewDomainConfigVerifyResponse instantiates a new DomainConfigVerifyResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainConfigVerifyRequest() *DomainConfigVerifyRequest {
-	this := DomainConfigVerifyRequest{}
+func NewDomainConfigVerifyResponse() *DomainConfigVerifyResponse {
+	this := DomainConfigVerifyResponse{}
 	return &this
 }
 
-// NewDomainConfigVerifyRequestWithDefaults instantiates a new DomainConfigVerifyRequest object
+// NewDomainConfigVerifyResponseWithDefaults instantiates a new DomainConfigVerifyResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDomainConfigVerifyRequestWithDefaults() *DomainConfigVerifyRequest {
-	this := DomainConfigVerifyRequest{}
+func NewDomainConfigVerifyResponseWithDefaults() *DomainConfigVerifyResponse {
+	this := DomainConfigVerifyResponse{}
 	return &this
 }
 
 // GetDomainLdapConfig returns the DomainLdapConfig field value if set, zero value otherwise.
-func (o *DomainConfigVerifyRequest) GetDomainLdapConfig() DomainLDAPConfig {
+func (o *DomainConfigVerifyResponse) GetDomainLdapConfig() DomainLDAPConfig {
 	if o == nil || o.DomainLdapConfig == nil {
 		var ret DomainLDAPConfig
 		return ret
@@ -47,7 +47,7 @@ func (o *DomainConfigVerifyRequest) GetDomainLdapConfig() DomainLDAPConfig {
 
 // GetDomainLdapConfigOk returns a tuple with the DomainLdapConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainConfigVerifyRequest) GetDomainLdapConfigOk() (*DomainLDAPConfig, bool) {
+func (o *DomainConfigVerifyResponse) GetDomainLdapConfigOk() (*DomainLDAPConfig, bool) {
 	if o == nil || o.DomainLdapConfig == nil {
 		return nil, false
 	}
@@ -55,7 +55,7 @@ func (o *DomainConfigVerifyRequest) GetDomainLdapConfigOk() (*DomainLDAPConfig, 
 }
 
 // HasDomainLdapConfig returns a boolean if a field has been set.
-func (o *DomainConfigVerifyRequest) HasDomainLdapConfig() bool {
+func (o *DomainConfigVerifyResponse) HasDomainLdapConfig() bool {
 	if o != nil && o.DomainLdapConfig != nil {
 		return true
 	}
@@ -64,11 +64,11 @@ func (o *DomainConfigVerifyRequest) HasDomainLdapConfig() bool {
 }
 
 // SetDomainLdapConfig gets a reference to the given DomainLDAPConfig and assigns it to the DomainLdapConfig field.
-func (o *DomainConfigVerifyRequest) SetDomainLdapConfig(v DomainLDAPConfig) {
+func (o *DomainConfigVerifyResponse) SetDomainLdapConfig(v DomainLDAPConfig) {
 	o.DomainLdapConfig = &v
 }
 
-func (o DomainConfigVerifyRequest) MarshalJSON() ([]byte, error) {
+func (o DomainConfigVerifyResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DomainLdapConfig != nil {
 		toSerialize["domain_ldap_config"] = o.DomainLdapConfig
@@ -76,38 +76,38 @@ func (o DomainConfigVerifyRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableDomainConfigVerifyRequest struct {
-	value *DomainConfigVerifyRequest
+type NullableDomainConfigVerifyResponse struct {
+	value *DomainConfigVerifyResponse
 	isSet bool
 }
 
-func (v NullableDomainConfigVerifyRequest) Get() *DomainConfigVerifyRequest {
+func (v NullableDomainConfigVerifyResponse) Get() *DomainConfigVerifyResponse {
 	return v.value
 }
 
-func (v *NullableDomainConfigVerifyRequest) Set(val *DomainConfigVerifyRequest) {
+func (v *NullableDomainConfigVerifyResponse) Set(val *DomainConfigVerifyResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDomainConfigVerifyRequest) IsSet() bool {
+func (v NullableDomainConfigVerifyResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDomainConfigVerifyRequest) Unset() {
+func (v *NullableDomainConfigVerifyResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDomainConfigVerifyRequest(val *DomainConfigVerifyRequest) *NullableDomainConfigVerifyRequest {
-	return &NullableDomainConfigVerifyRequest{value: val, isSet: true}
+func NewNullableDomainConfigVerifyResponse(val *DomainConfigVerifyResponse) *NullableDomainConfigVerifyResponse {
+	return &NullableDomainConfigVerifyResponse{value: val, isSet: true}
 }
 
-func (v NullableDomainConfigVerifyRequest) MarshalJSON() ([]byte, error) {
+func (v NullableDomainConfigVerifyResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDomainConfigVerifyRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainConfigVerifyResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

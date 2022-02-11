@@ -647,7 +647,7 @@ No authorization required
 
 ## VerifyDomainConfig
 
-> interface{} VerifyDomainConfig(ctx, domainId).DomainConfig(domainConfig).Execute()
+> DomainConfigVerifyResponse VerifyDomainConfig(ctx, domainId).DomainConfig(domainConfig).Execute()
 
 
 
@@ -676,7 +676,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DomainApi.VerifyDomainConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `VerifyDomainConfig`: interface{}
+    // response from `VerifyDomainConfig`: DomainConfigVerifyResponse
     fmt.Fprintf(os.Stdout, "Response from `DomainApi.VerifyDomainConfig`: %v\n", resp)
 }
 ```
@@ -701,7 +701,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+[**DomainConfigVerifyResponse**](DomainConfigVerifyResponse.md)
 
 ### Authorization
 

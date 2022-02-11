@@ -4,13 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | Pointer to **string** |  | [optional] 
-**QueryScope** | Pointer to **string** |  | [optional] 
-**User** | Pointer to **string** |  | [optional] 
-**UserObjectclass** | Pointer to **string** |  | [optional] 
-**Password** | Pointer to **string** |  | [optional] 
-**UserTreeDn** | Pointer to **string** |  | [optional] 
-**UserIdAttribute** | Pointer to **string** |  | [optional] 
+**UserCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -31,180 +25,30 @@ NewDomainLDAPConfigWithDefaults instantiates a new DomainLDAPConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetUrl
+### GetUserCount
 
-`func (o *DomainLDAPConfig) GetUrl() string`
+`func (o *DomainLDAPConfig) GetUserCount() int32`
 
-GetUrl returns the Url field if non-nil, zero value otherwise.
+GetUserCount returns the UserCount field if non-nil, zero value otherwise.
 
-### GetUrlOk
+### GetUserCountOk
 
-`func (o *DomainLDAPConfig) GetUrlOk() (*string, bool)`
+`func (o *DomainLDAPConfig) GetUserCountOk() (*int32, bool)`
 
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+GetUserCountOk returns a tuple with the UserCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUrl
+### SetUserCount
 
-`func (o *DomainLDAPConfig) SetUrl(v string)`
+`func (o *DomainLDAPConfig) SetUserCount(v int32)`
 
-SetUrl sets Url field to given value.
+SetUserCount sets UserCount field to given value.
 
-### HasUrl
+### HasUserCount
 
-`func (o *DomainLDAPConfig) HasUrl() bool`
+`func (o *DomainLDAPConfig) HasUserCount() bool`
 
-HasUrl returns a boolean if a field has been set.
-
-### GetQueryScope
-
-`func (o *DomainLDAPConfig) GetQueryScope() string`
-
-GetQueryScope returns the QueryScope field if non-nil, zero value otherwise.
-
-### GetQueryScopeOk
-
-`func (o *DomainLDAPConfig) GetQueryScopeOk() (*string, bool)`
-
-GetQueryScopeOk returns a tuple with the QueryScope field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQueryScope
-
-`func (o *DomainLDAPConfig) SetQueryScope(v string)`
-
-SetQueryScope sets QueryScope field to given value.
-
-### HasQueryScope
-
-`func (o *DomainLDAPConfig) HasQueryScope() bool`
-
-HasQueryScope returns a boolean if a field has been set.
-
-### GetUser
-
-`func (o *DomainLDAPConfig) GetUser() string`
-
-GetUser returns the User field if non-nil, zero value otherwise.
-
-### GetUserOk
-
-`func (o *DomainLDAPConfig) GetUserOk() (*string, bool)`
-
-GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUser
-
-`func (o *DomainLDAPConfig) SetUser(v string)`
-
-SetUser sets User field to given value.
-
-### HasUser
-
-`func (o *DomainLDAPConfig) HasUser() bool`
-
-HasUser returns a boolean if a field has been set.
-
-### GetUserObjectclass
-
-`func (o *DomainLDAPConfig) GetUserObjectclass() string`
-
-GetUserObjectclass returns the UserObjectclass field if non-nil, zero value otherwise.
-
-### GetUserObjectclassOk
-
-`func (o *DomainLDAPConfig) GetUserObjectclassOk() (*string, bool)`
-
-GetUserObjectclassOk returns a tuple with the UserObjectclass field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserObjectclass
-
-`func (o *DomainLDAPConfig) SetUserObjectclass(v string)`
-
-SetUserObjectclass sets UserObjectclass field to given value.
-
-### HasUserObjectclass
-
-`func (o *DomainLDAPConfig) HasUserObjectclass() bool`
-
-HasUserObjectclass returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *DomainLDAPConfig) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *DomainLDAPConfig) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *DomainLDAPConfig) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *DomainLDAPConfig) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
-### GetUserTreeDn
-
-`func (o *DomainLDAPConfig) GetUserTreeDn() string`
-
-GetUserTreeDn returns the UserTreeDn field if non-nil, zero value otherwise.
-
-### GetUserTreeDnOk
-
-`func (o *DomainLDAPConfig) GetUserTreeDnOk() (*string, bool)`
-
-GetUserTreeDnOk returns a tuple with the UserTreeDn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserTreeDn
-
-`func (o *DomainLDAPConfig) SetUserTreeDn(v string)`
-
-SetUserTreeDn sets UserTreeDn field to given value.
-
-### HasUserTreeDn
-
-`func (o *DomainLDAPConfig) HasUserTreeDn() bool`
-
-HasUserTreeDn returns a boolean if a field has been set.
-
-### GetUserIdAttribute
-
-`func (o *DomainLDAPConfig) GetUserIdAttribute() string`
-
-GetUserIdAttribute returns the UserIdAttribute field if non-nil, zero value otherwise.
-
-### GetUserIdAttributeOk
-
-`func (o *DomainLDAPConfig) GetUserIdAttributeOk() (*string, bool)`
-
-GetUserIdAttributeOk returns a tuple with the UserIdAttribute field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserIdAttribute
-
-`func (o *DomainLDAPConfig) SetUserIdAttribute(v string)`
-
-SetUserIdAttribute sets UserIdAttribute field to given value.
-
-### HasUserIdAttribute
-
-`func (o *DomainLDAPConfig) HasUserIdAttribute() bool`
-
-HasUserIdAttribute returns a boolean if a field has been set.
+HasUserCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

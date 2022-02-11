@@ -374,10 +374,12 @@ paths:
           content:
             application/json:
               schema:
+                type: object
+                title: DomainConfigVerifyResponse
                 properties:
                   domain_ldap_config:
                     type: object
-                    title: DomainConfigVerifyResponse
+                    title: DomainLDAPConfig
                     properties:
                       user_count:
                         type: integer

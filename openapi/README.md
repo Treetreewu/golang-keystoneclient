@@ -153,7 +153,7 @@ Class | Method | HTTP request | Description
  - [DomainConfigConfig](docs/DomainConfigConfig.md)
  - [DomainConfigIdentity](docs/DomainConfigIdentity.md)
  - [DomainConfigLDAP](docs/DomainConfigLDAP.md)
- - [DomainConfigVerifyRequest](docs/DomainConfigVerifyRequest.md)
+ - [DomainConfigVerifyResponse](docs/DomainConfigVerifyResponse.md)
  - [DomainCreate](docs/DomainCreate.md)
  - [DomainCreateRequest](docs/DomainCreateRequest.md)
  - [DomainLDAPConfig](docs/DomainLDAPConfig.md)

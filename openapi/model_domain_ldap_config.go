@@ -16,13 +16,7 @@ import (
 
 // DomainLDAPConfig struct for DomainLDAPConfig
 type DomainLDAPConfig struct {
-	Url             *string `json:"url,omitempty"`
-	QueryScope      *string `json:"query_scope,omitempty"`
-	User            *string `json:"user,omitempty"`
-	UserObjectclass *string `json:"user_objectclass,omitempty"`
-	Password        *string `json:"password,omitempty"`
-	UserTreeDn      *string `json:"user_tree_dn,omitempty"`
-	UserIdAttribute *string `json:"user_id_attribute,omitempty"`
+	UserCount *int32 `json:"user_count,omitempty"`
 }
 
 // NewDomainLDAPConfig instantiates a new DomainLDAPConfig object
@@ -42,252 +36,42 @@ func NewDomainLDAPConfigWithDefaults() *DomainLDAPConfig {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
-func (o *DomainLDAPConfig) GetUrl() string {
-	if o == nil || o.Url == nil {
-		var ret string
+// GetUserCount returns the UserCount field value if set, zero value otherwise.
+func (o *DomainLDAPConfig) GetUserCount() int32 {
+	if o == nil || o.UserCount == nil {
+		var ret int32
 		return ret
 	}
-	return *o.Url
+	return *o.UserCount
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUserCountOk returns a tuple with the UserCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainLDAPConfig) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+func (o *DomainLDAPConfig) GetUserCountOk() (*int32, bool) {
+	if o == nil || o.UserCount == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.UserCount, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *DomainLDAPConfig) HasUrl() bool {
-	if o != nil && o.Url != nil {
+// HasUserCount returns a boolean if a field has been set.
+func (o *DomainLDAPConfig) HasUserCount() bool {
+	if o != nil && o.UserCount != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *DomainLDAPConfig) SetUrl(v string) {
-	o.Url = &v
-}
-
-// GetQueryScope returns the QueryScope field value if set, zero value otherwise.
-func (o *DomainLDAPConfig) GetQueryScope() string {
-	if o == nil || o.QueryScope == nil {
-		var ret string
-		return ret
-	}
-	return *o.QueryScope
-}
-
-// GetQueryScopeOk returns a tuple with the QueryScope field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DomainLDAPConfig) GetQueryScopeOk() (*string, bool) {
-	if o == nil || o.QueryScope == nil {
-		return nil, false
-	}
-	return o.QueryScope, true
-}
-
-// HasQueryScope returns a boolean if a field has been set.
-func (o *DomainLDAPConfig) HasQueryScope() bool {
-	if o != nil && o.QueryScope != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetQueryScope gets a reference to the given string and assigns it to the QueryScope field.
-func (o *DomainLDAPConfig) SetQueryScope(v string) {
-	o.QueryScope = &v
-}
-
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *DomainLDAPConfig) GetUser() string {
-	if o == nil || o.User == nil {
-		var ret string
-		return ret
-	}
-	return *o.User
-}
-
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DomainLDAPConfig) GetUserOk() (*string, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
-	}
-	return o.User, true
-}
-
-// HasUser returns a boolean if a field has been set.
-func (o *DomainLDAPConfig) HasUser() bool {
-	if o != nil && o.User != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given string and assigns it to the User field.
-func (o *DomainLDAPConfig) SetUser(v string) {
-	o.User = &v
-}
-
-// GetUserObjectclass returns the UserObjectclass field value if set, zero value otherwise.
-func (o *DomainLDAPConfig) GetUserObjectclass() string {
-	if o == nil || o.UserObjectclass == nil {
-		var ret string
-		return ret
-	}
-	return *o.UserObjectclass
-}
-
-// GetUserObjectclassOk returns a tuple with the UserObjectclass field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DomainLDAPConfig) GetUserObjectclassOk() (*string, bool) {
-	if o == nil || o.UserObjectclass == nil {
-		return nil, false
-	}
-	return o.UserObjectclass, true
-}
-
-// HasUserObjectclass returns a boolean if a field has been set.
-func (o *DomainLDAPConfig) HasUserObjectclass() bool {
-	if o != nil && o.UserObjectclass != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserObjectclass gets a reference to the given string and assigns it to the UserObjectclass field.
-func (o *DomainLDAPConfig) SetUserObjectclass(v string) {
-	o.UserObjectclass = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *DomainLDAPConfig) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DomainLDAPConfig) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *DomainLDAPConfig) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *DomainLDAPConfig) SetPassword(v string) {
-	o.Password = &v
-}
-
-// GetUserTreeDn returns the UserTreeDn field value if set, zero value otherwise.
-func (o *DomainLDAPConfig) GetUserTreeDn() string {
-	if o == nil || o.UserTreeDn == nil {
-		var ret string
-		return ret
-	}
-	return *o.UserTreeDn
-}
-
-// GetUserTreeDnOk returns a tuple with the UserTreeDn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DomainLDAPConfig) GetUserTreeDnOk() (*string, bool) {
-	if o == nil || o.UserTreeDn == nil {
-		return nil, false
-	}
-	return o.UserTreeDn, true
-}
-
-// HasUserTreeDn returns a boolean if a field has been set.
-func (o *DomainLDAPConfig) HasUserTreeDn() bool {
-	if o != nil && o.UserTreeDn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserTreeDn gets a reference to the given string and assigns it to the UserTreeDn field.
-func (o *DomainLDAPConfig) SetUserTreeDn(v string) {
-	o.UserTreeDn = &v
-}
-
-// GetUserIdAttribute returns the UserIdAttribute field value if set, zero value otherwise.
-func (o *DomainLDAPConfig) GetUserIdAttribute() string {
-	if o == nil || o.UserIdAttribute == nil {
-		var ret string
-		return ret
-	}
-	return *o.UserIdAttribute
-}
-
-// GetUserIdAttributeOk returns a tuple with the UserIdAttribute field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DomainLDAPConfig) GetUserIdAttributeOk() (*string, bool) {
-	if o == nil || o.UserIdAttribute == nil {
-		return nil, false
-	}
-	return o.UserIdAttribute, true
-}
-
-// HasUserIdAttribute returns a boolean if a field has been set.
-func (o *DomainLDAPConfig) HasUserIdAttribute() bool {
-	if o != nil && o.UserIdAttribute != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserIdAttribute gets a reference to the given string and assigns it to the UserIdAttribute field.
-func (o *DomainLDAPConfig) SetUserIdAttribute(v string) {
-	o.UserIdAttribute = &v
+// SetUserCount gets a reference to the given int32 and assigns it to the UserCount field.
+func (o *DomainLDAPConfig) SetUserCount(v int32) {
+	o.UserCount = &v
 }
 
 func (o DomainLDAPConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.QueryScope != nil {
-		toSerialize["query_scope"] = o.QueryScope
-	}
-	if o.User != nil {
-		toSerialize["user"] = o.User
-	}
-	if o.UserObjectclass != nil {
-		toSerialize["user_objectclass"] = o.UserObjectclass
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
-	if o.UserTreeDn != nil {
-		toSerialize["user_tree_dn"] = o.UserTreeDn
-	}
-	if o.UserIdAttribute != nil {
-		toSerialize["user_id_attribute"] = o.UserIdAttribute
+	if o.UserCount != nil {
+		toSerialize["user_count"] = o.UserCount
 	}
 	return json.Marshal(toSerialize)
 }

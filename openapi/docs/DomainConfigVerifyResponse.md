@@ -1,4 +1,4 @@
-# DomainConfigVerifyRequest
+# DomainConfigVerifyResponse
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewDomainConfigVerifyRequest
+### NewDomainConfigVerifyResponse
 
-`func NewDomainConfigVerifyRequest() *DomainConfigVerifyRequest`
+`func NewDomainConfigVerifyResponse() *DomainConfigVerifyResponse`
 
-NewDomainConfigVerifyRequest instantiates a new DomainConfigVerifyRequest object
+NewDomainConfigVerifyResponse instantiates a new DomainConfigVerifyResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewDomainConfigVerifyRequestWithDefaults
+### NewDomainConfigVerifyResponseWithDefaults
 
-`func NewDomainConfigVerifyRequestWithDefaults() *DomainConfigVerifyRequest`
+`func NewDomainConfigVerifyResponseWithDefaults() *DomainConfigVerifyResponse`
 
-NewDomainConfigVerifyRequestWithDefaults instantiates a new DomainConfigVerifyRequest object
+NewDomainConfigVerifyResponseWithDefaults instantiates a new DomainConfigVerifyResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDomainLdapConfig
 
-`func (o *DomainConfigVerifyRequest) GetDomainLdapConfig() DomainLDAPConfig`
+`func (o *DomainConfigVerifyResponse) GetDomainLdapConfig() DomainLDAPConfig`
 
 GetDomainLdapConfig returns the DomainLdapConfig field if non-nil, zero value otherwise.
 
 ### GetDomainLdapConfigOk
 
-`func (o *DomainConfigVerifyRequest) GetDomainLdapConfigOk() (*DomainLDAPConfig, bool)`
+`func (o *DomainConfigVerifyResponse) GetDomainLdapConfigOk() (*DomainLDAPConfig, bool)`
 
 GetDomainLdapConfigOk returns a tuple with the DomainLdapConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDomainLdapConfig
 
-`func (o *DomainConfigVerifyRequest) SetDomainLdapConfig(v DomainLDAPConfig)`
+`func (o *DomainConfigVerifyResponse) SetDomainLdapConfig(v DomainLDAPConfig)`
 
 SetDomainLdapConfig sets DomainLdapConfig field to given value.
 
 ### HasDomainLdapConfig
 
-`func (o *DomainConfigVerifyRequest) HasDomainLdapConfig() bool`
+`func (o *DomainConfigVerifyResponse) HasDomainLdapConfig() bool`
 
 HasDomainLdapConfig returns a boolean if a field has been set.
 

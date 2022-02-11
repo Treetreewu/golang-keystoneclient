@@ -1737,7 +1737,7 @@ func (r ApiVerifyDomainConfigRequest) DomainConfig(domainConfig DomainConfig) Ap
 	return r
 }
 
-func (r ApiVerifyDomainConfigRequest) Execute() (interface{}, *_nethttp.Response, error) {
+func (r ApiVerifyDomainConfigRequest) Execute() (DomainConfigVerifyResponse, *_nethttp.Response, error) {
 	return r.ApiService.VerifyDomainConfigExecute(r)
 }
 
@@ -1759,15 +1759,15 @@ func (a *DomainApiService) VerifyDomainConfig(ctx _context.Context, domainId str
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *DomainApiService) VerifyDomainConfigExecute(r ApiVerifyDomainConfigRequest) (interface{}, *_nethttp.Response, error) {
+//  @return DomainConfigVerifyResponse
+func (a *DomainApiService) VerifyDomainConfigExecute(r ApiVerifyDomainConfigRequest) (DomainConfigVerifyResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  interface{}
+		localVarReturnValue  DomainConfigVerifyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DomainApiService.VerifyDomainConfig")
