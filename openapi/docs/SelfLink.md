@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Self** | Pointer to **NullableString** |  | [optional] [default to "null"]
+**Self** | Pointer to **string** |  | [optional] [default to "null"]
 
 ## Methods
 
@@ -50,16 +50,6 @@ SetSelf sets Self field to given value.
 
 HasSelf returns a boolean if a field has been set.
 
-### SetSelfNil
-
-`func (o *SelfLink) SetSelfNil(b bool)`
-
- SetSelfNil sets the value for Self to be an explicit nil
-
-### UnsetSelf
-`func (o *SelfLink) UnsetSelf()`
-
-UnsetSelf ensures that no value is present for Self, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

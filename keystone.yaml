@@ -1277,7 +1277,6 @@ paths:
                               type: string
                             name:
                               type: string
-                              nullable: true
                             domain:
                               $ref: '#/components/schemas/id_and_name'
                         user:
@@ -1287,7 +1286,6 @@ paths:
                               type: string
                             name:
                               type: string
-                              nullable: true
                             domain:
                               $ref: '#/components/schemas/id_and_name'
                         scope:
@@ -1304,7 +1302,6 @@ paths:
                                   type: string
                                 name:
                                   type: string
-                                  nullable: true
                                 domain:
                                   $ref: '#/components/schemas/id_and_name'
         '400':
@@ -2536,7 +2533,6 @@ components:
           type: string
         name:
           type: string
-          nullable: true
     error_response:
       properties:
         error:
@@ -2617,7 +2613,6 @@ components:
           description: The role name.
         domain_id:
           type: string
-          nullable: true
           description: The ID of the domain.
         links:
           $ref: '#/components/schemas/self_link'
@@ -2638,7 +2633,6 @@ components:
       default: null
       format: uri
       type: string
-      nullable: true
       example: http://example.com/identity/v3/some_resource/etc
     user:
       properties:
@@ -2649,7 +2643,6 @@ components:
           description: The user name. Must be unique within the owning domain.
         default_project_id:
           type: string
-          nullable: true
           description: The ID of the default project for the user.
             A user’s default project must not be a domain. Setting
             this attribute does not grant any actual authorization
@@ -2676,7 +2669,6 @@ components:
         email:
           type: string
           format: email
-          nullable: true
           description: The email of the user.
         description:
           description: Description of the user.
@@ -2686,7 +2678,6 @@ components:
         links:
           $ref: '#/components/schemas/self_link'
         password_expires_at:
-          nullable: true
           type: string
           format: date-time
           description: |
@@ -2695,14 +2686,10 @@ components:
             This is a response object attribute; not valid for requests. A `null` value indicates that the password never expires.
 
             New in version 3.7
-
-
         user_type:
           type: string
-          nullable: true
         user_role:
           type: string
-          nullable: true
         failed_auth_login_count:
           type: integer
         auth_login_locked_end_time:
@@ -2717,25 +2704,18 @@ components:
       properties:
         ignore_change_password_upon_first_use:
           type: boolean
-          nullable: true
         ignore_password_expiry:
           type: boolean
-          nullable: true
         ignore_lockout_failure_attempts:
           type: boolean
-          nullable: true
         lock_password:
           type: boolean
-          nullable: true
         multi_factor_auth_enabled:
           type: boolean
-          nullable: true
         multi_factor_auth_rules:
           type: boolean
-          nullable: true
         ignore_user_inactivity:
           type: boolean
-          nullable: true
     federated:
       type: array
       items:
@@ -2760,11 +2740,9 @@ components:
         assignment:
           type: string
           format: uri
-          nullable: true
         membership:
           type: string
           format: uri
-          nullable: true
     application_credential:
       type: object
       properties:

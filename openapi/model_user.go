@@ -21,23 +21,23 @@ type User struct {
 	// The user name. Must be unique within the owning domain.
 	Name *string `json:"name,omitempty"`
 	// The ID of the default project for the user. A user’s default project must not be a domain. Setting this attribute does not grant any actual authorization on the project, and is merely provided for convenience. Therefore, the referenced project does not need to exist within the user domain. (Since v3.1) If the user does not have authorization to their default project, the default project is ignored at token creation. (Since v3.1) Additionally, if your default project is not valid, a token is issued without an explicit scope of authorization.
-	DefaultProjectId NullableString `json:"default_project_id,omitempty"`
+	DefaultProjectId *string `json:"default_project_id,omitempty"`
 	// The ID of the domain of the user. If the domain ID is not provided in the request, the Identity service will attempt to pull the domain ID from the token used in the request. Note that this requires the use of a domain-scoped token.
 	DomainId  *string                   `json:"domain_id,omitempty"`
 	Federated *[]map[string]interface{} `json:"federated,omitempty"`
 	// If the user is enabled, this value is `true`. If the user is disabled, this value is `false`.
 	Enabled *bool `json:"enabled,omitempty"`
 	// The email of the user.
-	Email NullableString `json:"email,omitempty"`
+	Email *string `json:"email,omitempty"`
 	// Description of the user.
 	Description *string      `json:"description,omitempty"`
 	Options     *UserOptions `json:"options,omitempty"`
 	Links       *SelfLink    `json:"links,omitempty"`
 	// The date and time when the password expires. The time zone is UTC.  This is a response object attribute; not valid for requests. A `null` value indicates that the password never expires.  New in version 3.7
-	PasswordExpiresAt    NullableTime   `json:"password_expires_at,omitempty"`
-	UserType             NullableString `json:"user_type,omitempty"`
-	UserRole             NullableString `json:"user_role,omitempty"`
-	FailedAuthLoginCount *int32         `json:"failed_auth_login_count,omitempty"`
+	PasswordExpiresAt    *time.Time `json:"password_expires_at,omitempty"`
+	UserType             *string    `json:"user_type,omitempty"`
+	UserRole             *string    `json:"user_role,omitempty"`
+	FailedAuthLoginCount *int32     `json:"failed_auth_login_count,omitempty"`
 	// Date time in `YYYYMMDDHHmm` format.
 	AuthLoginLockedEndTime *string `json:"auth_login_locked_end_time,omitempty"`
 	AuthLoginStartTime     *string `json:"auth_login_start_time,omitempty"`
@@ -124,47 +124,36 @@ func (o *User) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDefaultProjectId returns the DefaultProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDefaultProjectId returns the DefaultProjectId field value if set, zero value otherwise.
 func (o *User) GetDefaultProjectId() string {
-	if o == nil || o.DefaultProjectId.Get() == nil {
+	if o == nil || o.DefaultProjectId == nil {
 		var ret string
 		return ret
 	}
-	return *o.DefaultProjectId.Get()
+	return *o.DefaultProjectId
 }
 
 // GetDefaultProjectIdOk returns a tuple with the DefaultProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetDefaultProjectIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.DefaultProjectId == nil {
 		return nil, false
 	}
-	return o.DefaultProjectId.Get(), o.DefaultProjectId.IsSet()
+	return o.DefaultProjectId, true
 }
 
 // HasDefaultProjectId returns a boolean if a field has been set.
 func (o *User) HasDefaultProjectId() bool {
-	if o != nil && o.DefaultProjectId.IsSet() {
+	if o != nil && o.DefaultProjectId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultProjectId gets a reference to the given NullableString and assigns it to the DefaultProjectId field.
+// SetDefaultProjectId gets a reference to the given string and assigns it to the DefaultProjectId field.
 func (o *User) SetDefaultProjectId(v string) {
-	o.DefaultProjectId.Set(&v)
-}
-
-// SetDefaultProjectIdNil sets the value for DefaultProjectId to be an explicit nil
-func (o *User) SetDefaultProjectIdNil() {
-	o.DefaultProjectId.Set(nil)
-}
-
-// UnsetDefaultProjectId ensures that no value is present for DefaultProjectId, not even an explicit nil
-func (o *User) UnsetDefaultProjectId() {
-	o.DefaultProjectId.Unset()
+	o.DefaultProjectId = &v
 }
 
 // GetDomainId returns the DomainId field value if set, zero value otherwise.
@@ -263,47 +252,36 @@ func (o *User) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *User) GetEmail() string {
-	if o == nil || o.Email.Get() == nil {
+	if o == nil || o.Email == nil {
 		var ret string
 		return ret
 	}
-	return *o.Email.Get()
+	return *o.Email
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Email == nil {
 		return nil, false
 	}
-	return o.Email.Get(), o.Email.IsSet()
+	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *User) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
+	if o != nil && o.Email != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *User) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *User) SetEmailNil() {
-	o.Email.Set(nil)
-}
-
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *User) UnsetEmail() {
-	o.Email.Unset()
+	o.Email = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -402,133 +380,100 @@ func (o *User) SetLinks(v SelfLink) {
 	o.Links = &v
 }
 
-// GetPasswordExpiresAt returns the PasswordExpiresAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPasswordExpiresAt returns the PasswordExpiresAt field value if set, zero value otherwise.
 func (o *User) GetPasswordExpiresAt() time.Time {
-	if o == nil || o.PasswordExpiresAt.Get() == nil {
+	if o == nil || o.PasswordExpiresAt == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.PasswordExpiresAt.Get()
+	return *o.PasswordExpiresAt
 }
 
 // GetPasswordExpiresAtOk returns a tuple with the PasswordExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetPasswordExpiresAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || o.PasswordExpiresAt == nil {
 		return nil, false
 	}
-	return o.PasswordExpiresAt.Get(), o.PasswordExpiresAt.IsSet()
+	return o.PasswordExpiresAt, true
 }
 
 // HasPasswordExpiresAt returns a boolean if a field has been set.
 func (o *User) HasPasswordExpiresAt() bool {
-	if o != nil && o.PasswordExpiresAt.IsSet() {
+	if o != nil && o.PasswordExpiresAt != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPasswordExpiresAt gets a reference to the given NullableTime and assigns it to the PasswordExpiresAt field.
+// SetPasswordExpiresAt gets a reference to the given time.Time and assigns it to the PasswordExpiresAt field.
 func (o *User) SetPasswordExpiresAt(v time.Time) {
-	o.PasswordExpiresAt.Set(&v)
+	o.PasswordExpiresAt = &v
 }
 
-// SetPasswordExpiresAtNil sets the value for PasswordExpiresAt to be an explicit nil
-func (o *User) SetPasswordExpiresAtNil() {
-	o.PasswordExpiresAt.Set(nil)
-}
-
-// UnsetPasswordExpiresAt ensures that no value is present for PasswordExpiresAt, not even an explicit nil
-func (o *User) UnsetPasswordExpiresAt() {
-	o.PasswordExpiresAt.Unset()
-}
-
-// GetUserType returns the UserType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserType returns the UserType field value if set, zero value otherwise.
 func (o *User) GetUserType() string {
-	if o == nil || o.UserType.Get() == nil {
+	if o == nil || o.UserType == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserType.Get()
+	return *o.UserType
 }
 
 // GetUserTypeOk returns a tuple with the UserType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetUserTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.UserType == nil {
 		return nil, false
 	}
-	return o.UserType.Get(), o.UserType.IsSet()
+	return o.UserType, true
 }
 
 // HasUserType returns a boolean if a field has been set.
 func (o *User) HasUserType() bool {
-	if o != nil && o.UserType.IsSet() {
+	if o != nil && o.UserType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetUserType gets a reference to the given NullableString and assigns it to the UserType field.
+// SetUserType gets a reference to the given string and assigns it to the UserType field.
 func (o *User) SetUserType(v string) {
-	o.UserType.Set(&v)
+	o.UserType = &v
 }
 
-// SetUserTypeNil sets the value for UserType to be an explicit nil
-func (o *User) SetUserTypeNil() {
-	o.UserType.Set(nil)
-}
-
-// UnsetUserType ensures that no value is present for UserType, not even an explicit nil
-func (o *User) UnsetUserType() {
-	o.UserType.Unset()
-}
-
-// GetUserRole returns the UserRole field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserRole returns the UserRole field value if set, zero value otherwise.
 func (o *User) GetUserRole() string {
-	if o == nil || o.UserRole.Get() == nil {
+	if o == nil || o.UserRole == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserRole.Get()
+	return *o.UserRole
 }
 
 // GetUserRoleOk returns a tuple with the UserRole field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetUserRoleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.UserRole == nil {
 		return nil, false
 	}
-	return o.UserRole.Get(), o.UserRole.IsSet()
+	return o.UserRole, true
 }
 
 // HasUserRole returns a boolean if a field has been set.
 func (o *User) HasUserRole() bool {
-	if o != nil && o.UserRole.IsSet() {
+	if o != nil && o.UserRole != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetUserRole gets a reference to the given NullableString and assigns it to the UserRole field.
+// SetUserRole gets a reference to the given string and assigns it to the UserRole field.
 func (o *User) SetUserRole(v string) {
-	o.UserRole.Set(&v)
-}
-
-// SetUserRoleNil sets the value for UserRole to be an explicit nil
-func (o *User) SetUserRoleNil() {
-	o.UserRole.Set(nil)
-}
-
-// UnsetUserRole ensures that no value is present for UserRole, not even an explicit nil
-func (o *User) UnsetUserRole() {
-	o.UserRole.Unset()
+	o.UserRole = &v
 }
 
 // GetFailedAuthLoginCount returns the FailedAuthLoginCount field value if set, zero value otherwise.
@@ -635,8 +580,8 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.DefaultProjectId.IsSet() {
-		toSerialize["default_project_id"] = o.DefaultProjectId.Get()
+	if o.DefaultProjectId != nil {
+		toSerialize["default_project_id"] = o.DefaultProjectId
 	}
 	if o.DomainId != nil {
 		toSerialize["domain_id"] = o.DomainId
@@ -647,8 +592,8 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
+	if o.Email != nil {
+		toSerialize["email"] = o.Email
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
@@ -659,14 +604,14 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.Links != nil {
 		toSerialize["links"] = o.Links
 	}
-	if o.PasswordExpiresAt.IsSet() {
-		toSerialize["password_expires_at"] = o.PasswordExpiresAt.Get()
+	if o.PasswordExpiresAt != nil {
+		toSerialize["password_expires_at"] = o.PasswordExpiresAt
 	}
-	if o.UserType.IsSet() {
-		toSerialize["user_type"] = o.UserType.Get()
+	if o.UserType != nil {
+		toSerialize["user_type"] = o.UserType
 	}
-	if o.UserRole.IsSet() {
-		toSerialize["user_role"] = o.UserRole.Get()
+	if o.UserRole != nil {
+		toSerialize["user_role"] = o.UserRole
 	}
 	if o.FailedAuthLoginCount != nil {
 		toSerialize["failed_auth_login_count"] = o.FailedAuthLoginCount

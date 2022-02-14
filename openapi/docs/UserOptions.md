@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IgnoreChangePasswordUponFirstUse** | Pointer to **NullableBool** |  | [optional] 
-**IgnorePasswordExpiry** | Pointer to **NullableBool** |  | [optional] 
-**IgnoreLockoutFailureAttempts** | Pointer to **NullableBool** |  | [optional] 
-**LockPassword** | Pointer to **NullableBool** |  | [optional] 
-**MultiFactorAuthEnabled** | Pointer to **NullableBool** |  | [optional] 
-**MultiFactorAuthRules** | Pointer to **NullableBool** |  | [optional] 
-**IgnoreUserInactivity** | Pointer to **NullableBool** |  | [optional] 
+**IgnoreChangePasswordUponFirstUse** | Pointer to **bool** |  | [optional] 
+**IgnorePasswordExpiry** | Pointer to **bool** |  | [optional] 
+**IgnoreLockoutFailureAttempts** | Pointer to **bool** |  | [optional] 
+**LockPassword** | Pointer to **bool** |  | [optional] 
+**MultiFactorAuthEnabled** | Pointer to **bool** |  | [optional] 
+**MultiFactorAuthRules** | Pointer to **bool** |  | [optional] 
+**IgnoreUserInactivity** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -56,16 +56,6 @@ SetIgnoreChangePasswordUponFirstUse sets IgnoreChangePasswordUponFirstUse field 
 
 HasIgnoreChangePasswordUponFirstUse returns a boolean if a field has been set.
 
-### SetIgnoreChangePasswordUponFirstUseNil
-
-`func (o *UserOptions) SetIgnoreChangePasswordUponFirstUseNil(b bool)`
-
- SetIgnoreChangePasswordUponFirstUseNil sets the value for IgnoreChangePasswordUponFirstUse to be an explicit nil
-
-### UnsetIgnoreChangePasswordUponFirstUse
-`func (o *UserOptions) UnsetIgnoreChangePasswordUponFirstUse()`
-
-UnsetIgnoreChangePasswordUponFirstUse ensures that no value is present for IgnoreChangePasswordUponFirstUse, not even an explicit nil
 ### GetIgnorePasswordExpiry
 
 `func (o *UserOptions) GetIgnorePasswordExpiry() bool`
@@ -91,16 +81,6 @@ SetIgnorePasswordExpiry sets IgnorePasswordExpiry field to given value.
 
 HasIgnorePasswordExpiry returns a boolean if a field has been set.
 
-### SetIgnorePasswordExpiryNil
-
-`func (o *UserOptions) SetIgnorePasswordExpiryNil(b bool)`
-
- SetIgnorePasswordExpiryNil sets the value for IgnorePasswordExpiry to be an explicit nil
-
-### UnsetIgnorePasswordExpiry
-`func (o *UserOptions) UnsetIgnorePasswordExpiry()`
-
-UnsetIgnorePasswordExpiry ensures that no value is present for IgnorePasswordExpiry, not even an explicit nil
 ### GetIgnoreLockoutFailureAttempts
 
 `func (o *UserOptions) GetIgnoreLockoutFailureAttempts() bool`
@@ -126,16 +106,6 @@ SetIgnoreLockoutFailureAttempts sets IgnoreLockoutFailureAttempts field to given
 
 HasIgnoreLockoutFailureAttempts returns a boolean if a field has been set.
 
-### SetIgnoreLockoutFailureAttemptsNil
-
-`func (o *UserOptions) SetIgnoreLockoutFailureAttemptsNil(b bool)`
-
- SetIgnoreLockoutFailureAttemptsNil sets the value for IgnoreLockoutFailureAttempts to be an explicit nil
-
-### UnsetIgnoreLockoutFailureAttempts
-`func (o *UserOptions) UnsetIgnoreLockoutFailureAttempts()`
-
-UnsetIgnoreLockoutFailureAttempts ensures that no value is present for IgnoreLockoutFailureAttempts, not even an explicit nil
 ### GetLockPassword
 
 `func (o *UserOptions) GetLockPassword() bool`
@@ -161,16 +131,6 @@ SetLockPassword sets LockPassword field to given value.
 
 HasLockPassword returns a boolean if a field has been set.
 
-### SetLockPasswordNil
-
-`func (o *UserOptions) SetLockPasswordNil(b bool)`
-
- SetLockPasswordNil sets the value for LockPassword to be an explicit nil
-
-### UnsetLockPassword
-`func (o *UserOptions) UnsetLockPassword()`
-
-UnsetLockPassword ensures that no value is present for LockPassword, not even an explicit nil
 ### GetMultiFactorAuthEnabled
 
 `func (o *UserOptions) GetMultiFactorAuthEnabled() bool`
@@ -196,16 +156,6 @@ SetMultiFactorAuthEnabled sets MultiFactorAuthEnabled field to given value.
 
 HasMultiFactorAuthEnabled returns a boolean if a field has been set.
 
-### SetMultiFactorAuthEnabledNil
-
-`func (o *UserOptions) SetMultiFactorAuthEnabledNil(b bool)`
-
- SetMultiFactorAuthEnabledNil sets the value for MultiFactorAuthEnabled to be an explicit nil
-
-### UnsetMultiFactorAuthEnabled
-`func (o *UserOptions) UnsetMultiFactorAuthEnabled()`
-
-UnsetMultiFactorAuthEnabled ensures that no value is present for MultiFactorAuthEnabled, not even an explicit nil
 ### GetMultiFactorAuthRules
 
 `func (o *UserOptions) GetMultiFactorAuthRules() bool`
@@ -231,16 +181,6 @@ SetMultiFactorAuthRules sets MultiFactorAuthRules field to given value.
 
 HasMultiFactorAuthRules returns a boolean if a field has been set.
 
-### SetMultiFactorAuthRulesNil
-
-`func (o *UserOptions) SetMultiFactorAuthRulesNil(b bool)`
-
- SetMultiFactorAuthRulesNil sets the value for MultiFactorAuthRules to be an explicit nil
-
-### UnsetMultiFactorAuthRules
-`func (o *UserOptions) UnsetMultiFactorAuthRules()`
-
-UnsetMultiFactorAuthRules ensures that no value is present for MultiFactorAuthRules, not even an explicit nil
 ### GetIgnoreUserInactivity
 
 `func (o *UserOptions) GetIgnoreUserInactivity() bool`
@@ -266,16 +206,6 @@ SetIgnoreUserInactivity sets IgnoreUserInactivity field to given value.
 
 HasIgnoreUserInactivity returns a boolean if a field has been set.
 
-### SetIgnoreUserInactivityNil
-
-`func (o *UserOptions) SetIgnoreUserInactivityNil(b bool)`
-
- SetIgnoreUserInactivityNil sets the value for IgnoreUserInactivity to be an explicit nil
-
-### UnsetIgnoreUserInactivity
-`func (o *UserOptions) UnsetIgnoreUserInactivity()`
-
-UnsetIgnoreUserInactivity ensures that no value is present for IgnoreUserInactivity, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -16,8 +16,8 @@ import (
 
 // RoleAssignmentLinks struct for RoleAssignmentLinks
 type RoleAssignmentLinks struct {
-	Assignment NullableString `json:"assignment,omitempty"`
-	Membership NullableString `json:"membership,omitempty"`
+	Assignment *string `json:"assignment,omitempty"`
+	Membership *string `json:"membership,omitempty"`
 }
 
 // NewRoleAssignmentLinks instantiates a new RoleAssignmentLinks object
@@ -37,99 +37,77 @@ func NewRoleAssignmentLinksWithDefaults() *RoleAssignmentLinks {
 	return &this
 }
 
-// GetAssignment returns the Assignment field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAssignment returns the Assignment field value if set, zero value otherwise.
 func (o *RoleAssignmentLinks) GetAssignment() string {
-	if o == nil || o.Assignment.Get() == nil {
+	if o == nil || o.Assignment == nil {
 		var ret string
 		return ret
 	}
-	return *o.Assignment.Get()
+	return *o.Assignment
 }
 
 // GetAssignmentOk returns a tuple with the Assignment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleAssignmentLinks) GetAssignmentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Assignment == nil {
 		return nil, false
 	}
-	return o.Assignment.Get(), o.Assignment.IsSet()
+	return o.Assignment, true
 }
 
 // HasAssignment returns a boolean if a field has been set.
 func (o *RoleAssignmentLinks) HasAssignment() bool {
-	if o != nil && o.Assignment.IsSet() {
+	if o != nil && o.Assignment != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAssignment gets a reference to the given NullableString and assigns it to the Assignment field.
+// SetAssignment gets a reference to the given string and assigns it to the Assignment field.
 func (o *RoleAssignmentLinks) SetAssignment(v string) {
-	o.Assignment.Set(&v)
+	o.Assignment = &v
 }
 
-// SetAssignmentNil sets the value for Assignment to be an explicit nil
-func (o *RoleAssignmentLinks) SetAssignmentNil() {
-	o.Assignment.Set(nil)
-}
-
-// UnsetAssignment ensures that no value is present for Assignment, not even an explicit nil
-func (o *RoleAssignmentLinks) UnsetAssignment() {
-	o.Assignment.Unset()
-}
-
-// GetMembership returns the Membership field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMembership returns the Membership field value if set, zero value otherwise.
 func (o *RoleAssignmentLinks) GetMembership() string {
-	if o == nil || o.Membership.Get() == nil {
+	if o == nil || o.Membership == nil {
 		var ret string
 		return ret
 	}
-	return *o.Membership.Get()
+	return *o.Membership
 }
 
 // GetMembershipOk returns a tuple with the Membership field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleAssignmentLinks) GetMembershipOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Membership == nil {
 		return nil, false
 	}
-	return o.Membership.Get(), o.Membership.IsSet()
+	return o.Membership, true
 }
 
 // HasMembership returns a boolean if a field has been set.
 func (o *RoleAssignmentLinks) HasMembership() bool {
-	if o != nil && o.Membership.IsSet() {
+	if o != nil && o.Membership != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMembership gets a reference to the given NullableString and assigns it to the Membership field.
+// SetMembership gets a reference to the given string and assigns it to the Membership field.
 func (o *RoleAssignmentLinks) SetMembership(v string) {
-	o.Membership.Set(&v)
-}
-
-// SetMembershipNil sets the value for Membership to be an explicit nil
-func (o *RoleAssignmentLinks) SetMembershipNil() {
-	o.Membership.Set(nil)
-}
-
-// UnsetMembership ensures that no value is present for Membership, not even an explicit nil
-func (o *RoleAssignmentLinks) UnsetMembership() {
-	o.Membership.Unset()
+	o.Membership = &v
 }
 
 func (o RoleAssignmentLinks) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Assignment.IsSet() {
-		toSerialize["assignment"] = o.Assignment.Get()
+	if o.Assignment != nil {
+		toSerialize["assignment"] = o.Assignment
 	}
-	if o.Membership.IsSet() {
-		toSerialize["membership"] = o.Membership.Get()
+	if o.Membership != nil {
+		toSerialize["membership"] = o.Membership
 	}
 	return json.Marshal(toSerialize)
 }

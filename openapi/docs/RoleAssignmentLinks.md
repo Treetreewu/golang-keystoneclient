@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Assignment** | Pointer to **NullableString** |  | [optional] 
-**Membership** | Pointer to **NullableString** |  | [optional] 
+**Assignment** | Pointer to **string** |  | [optional] 
+**Membership** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -51,16 +51,6 @@ SetAssignment sets Assignment field to given value.
 
 HasAssignment returns a boolean if a field has been set.
 
-### SetAssignmentNil
-
-`func (o *RoleAssignmentLinks) SetAssignmentNil(b bool)`
-
- SetAssignmentNil sets the value for Assignment to be an explicit nil
-
-### UnsetAssignment
-`func (o *RoleAssignmentLinks) UnsetAssignment()`
-
-UnsetAssignment ensures that no value is present for Assignment, not even an explicit nil
 ### GetMembership
 
 `func (o *RoleAssignmentLinks) GetMembership() string`
@@ -86,16 +76,6 @@ SetMembership sets Membership field to given value.
 
 HasMembership returns a boolean if a field has been set.
 
-### SetMembershipNil
-
-`func (o *RoleAssignmentLinks) SetMembershipNil(b bool)`
-
- SetMembershipNil sets the value for Membership to be an explicit nil
-
-### UnsetMembership
-`func (o *RoleAssignmentLinks) UnsetMembership()`
-
-UnsetMembership ensures that no value is present for Membership, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

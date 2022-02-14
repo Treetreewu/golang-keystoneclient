@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The role ID. | [optional] 
 **Name** | Pointer to **string** | The role name. | [optional] 
-**DomainId** | Pointer to **NullableString** | The ID of the domain. | [optional] 
+**DomainId** | Pointer to **string** | The ID of the domain. | [optional] 
 **Links** | Pointer to [**SelfLink**](SelfLink.md) |  | [optional] 
 **Description** | Pointer to **string** | The role description. | [optional] 
 **Type** | Pointer to **string** | The role type in keystone.roles.extra. | [optional] 
@@ -105,16 +105,6 @@ SetDomainId sets DomainId field to given value.
 
 HasDomainId returns a boolean if a field has been set.
 
-### SetDomainIdNil
-
-`func (o *Role) SetDomainIdNil(b bool)`
-
- SetDomainIdNil sets the value for DomainId to be an explicit nil
-
-### UnsetDomainId
-`func (o *Role) UnsetDomainId()`
-
-UnsetDomainId ensures that no value is present for DomainId, not even an explicit nil
 ### GetLinks
 
 `func (o *Role) GetLinks() SelfLink`

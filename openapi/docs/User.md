@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** | The user name. Must be unique within the owning domain. | [optional] 
-**DefaultProjectId** | Pointer to **NullableString** | The ID of the default project for the user. A user’s default project must not be a domain. Setting this attribute does not grant any actual authorization on the project, and is merely provided for convenience. Therefore, the referenced project does not need to exist within the user domain. (Since v3.1) If the user does not have authorization to their default project, the default project is ignored at token creation. (Since v3.1) Additionally, if your default project is not valid, a token is issued without an explicit scope of authorization. | [optional] 
+**DefaultProjectId** | Pointer to **string** | The ID of the default project for the user. A user’s default project must not be a domain. Setting this attribute does not grant any actual authorization on the project, and is merely provided for convenience. Therefore, the referenced project does not need to exist within the user domain. (Since v3.1) If the user does not have authorization to their default project, the default project is ignored at token creation. (Since v3.1) Additionally, if your default project is not valid, a token is issued without an explicit scope of authorization. | [optional] 
 **DomainId** | Pointer to **string** | The ID of the domain of the user. If the domain ID is not provided in the request, the Identity service will attempt to pull the domain ID from the token used in the request. Note that this requires the use of a domain-scoped token. | [optional] 
 **Federated** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **Enabled** | Pointer to **bool** | If the user is enabled, this value is &#x60;true&#x60;. If the user is disabled, this value is &#x60;false&#x60;. | [optional] 
-**Email** | Pointer to **NullableString** | The email of the user. | [optional] 
+**Email** | Pointer to **string** | The email of the user. | [optional] 
 **Description** | Pointer to **string** | Description of the user. | [optional] 
 **Options** | Pointer to [**UserOptions**](UserOptions.md) |  | [optional] 
 **Links** | Pointer to [**SelfLink**](SelfLink.md) |  | [optional] 
-**PasswordExpiresAt** | Pointer to **NullableTime** | The date and time when the password expires. The time zone is UTC.  This is a response object attribute; not valid for requests. A &#x60;null&#x60; value indicates that the password never expires.  New in version 3.7  | [optional] 
-**UserType** | Pointer to **NullableString** |  | [optional] 
-**UserRole** | Pointer to **NullableString** |  | [optional] 
+**PasswordExpiresAt** | Pointer to **time.Time** | The date and time when the password expires. The time zone is UTC.  This is a response object attribute; not valid for requests. A &#x60;null&#x60; value indicates that the password never expires.  New in version 3.7  | [optional] 
+**UserType** | Pointer to **string** |  | [optional] 
+**UserRole** | Pointer to **string** |  | [optional] 
 **FailedAuthLoginCount** | Pointer to **int32** |  | [optional] 
 **AuthLoginLockedEndTime** | Pointer to **string** | Date time in &#x60;YYYYMMDDHHmm&#x60; format. | [optional] 
 **AuthLoginStartTime** | Pointer to **string** |  | [optional] 
@@ -115,16 +115,6 @@ SetDefaultProjectId sets DefaultProjectId field to given value.
 
 HasDefaultProjectId returns a boolean if a field has been set.
 
-### SetDefaultProjectIdNil
-
-`func (o *User) SetDefaultProjectIdNil(b bool)`
-
- SetDefaultProjectIdNil sets the value for DefaultProjectId to be an explicit nil
-
-### UnsetDefaultProjectId
-`func (o *User) UnsetDefaultProjectId()`
-
-UnsetDefaultProjectId ensures that no value is present for DefaultProjectId, not even an explicit nil
 ### GetDomainId
 
 `func (o *User) GetDomainId() string`
@@ -225,16 +215,6 @@ SetEmail sets Email field to given value.
 
 HasEmail returns a boolean if a field has been set.
 
-### SetEmailNil
-
-`func (o *User) SetEmailNil(b bool)`
-
- SetEmailNil sets the value for Email to be an explicit nil
-
-### UnsetEmail
-`func (o *User) UnsetEmail()`
-
-UnsetEmail ensures that no value is present for Email, not even an explicit nil
 ### GetDescription
 
 `func (o *User) GetDescription() string`
@@ -335,16 +315,6 @@ SetPasswordExpiresAt sets PasswordExpiresAt field to given value.
 
 HasPasswordExpiresAt returns a boolean if a field has been set.
 
-### SetPasswordExpiresAtNil
-
-`func (o *User) SetPasswordExpiresAtNil(b bool)`
-
- SetPasswordExpiresAtNil sets the value for PasswordExpiresAt to be an explicit nil
-
-### UnsetPasswordExpiresAt
-`func (o *User) UnsetPasswordExpiresAt()`
-
-UnsetPasswordExpiresAt ensures that no value is present for PasswordExpiresAt, not even an explicit nil
 ### GetUserType
 
 `func (o *User) GetUserType() string`
@@ -370,16 +340,6 @@ SetUserType sets UserType field to given value.
 
 HasUserType returns a boolean if a field has been set.
 
-### SetUserTypeNil
-
-`func (o *User) SetUserTypeNil(b bool)`
-
- SetUserTypeNil sets the value for UserType to be an explicit nil
-
-### UnsetUserType
-`func (o *User) UnsetUserType()`
-
-UnsetUserType ensures that no value is present for UserType, not even an explicit nil
 ### GetUserRole
 
 `func (o *User) GetUserRole() string`
@@ -405,16 +365,6 @@ SetUserRole sets UserRole field to given value.
 
 HasUserRole returns a boolean if a field has been set.
 
-### SetUserRoleNil
-
-`func (o *User) SetUserRoleNil(b bool)`
-
- SetUserRoleNil sets the value for UserRole to be an explicit nil
-
-### UnsetUserRole
-`func (o *User) UnsetUserRole()`
-
-UnsetUserRole ensures that no value is present for UserRole, not even an explicit nil
 ### GetFailedAuthLoginCount
 
 `func (o *User) GetFailedAuthLoginCount() int32`

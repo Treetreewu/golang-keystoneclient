@@ -16,9 +16,9 @@ import (
 
 // Links The links to the resource.
 type Links struct {
-	Next     NullableString `json:"next,omitempty"`
-	Previous NullableString `json:"previous,omitempty"`
-	Self     NullableString `json:"self,omitempty"`
+	Next     *string `json:"next,omitempty"`
+	Previous *string `json:"previous,omitempty"`
+	Self     *string `json:"self,omitempty"`
 }
 
 // NewLinks instantiates a new Links object
@@ -28,11 +28,11 @@ type Links struct {
 func NewLinks() *Links {
 	this := Links{}
 	var next string = "null"
-	this.Next = *NewNullableString(&next)
+	this.Next = &next
 	var previous string = "null"
-	this.Previous = *NewNullableString(&previous)
+	this.Previous = &previous
 	var self string = "null"
-	this.Self = *NewNullableString(&self)
+	this.Self = &self
 	return &this
 }
 
@@ -42,153 +42,120 @@ func NewLinks() *Links {
 func NewLinksWithDefaults() *Links {
 	this := Links{}
 	var next string = "null"
-	this.Next = *NewNullableString(&next)
+	this.Next = &next
 	var previous string = "null"
-	this.Previous = *NewNullableString(&previous)
+	this.Previous = &previous
 	var self string = "null"
-	this.Self = *NewNullableString(&self)
+	this.Self = &self
 	return &this
 }
 
-// GetNext returns the Next field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNext returns the Next field value if set, zero value otherwise.
 func (o *Links) GetNext() string {
-	if o == nil || o.Next.Get() == nil {
+	if o == nil || o.Next == nil {
 		var ret string
 		return ret
 	}
-	return *o.Next.Get()
+	return *o.Next
 }
 
 // GetNextOk returns a tuple with the Next field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Links) GetNextOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Next == nil {
 		return nil, false
 	}
-	return o.Next.Get(), o.Next.IsSet()
+	return o.Next, true
 }
 
 // HasNext returns a boolean if a field has been set.
 func (o *Links) HasNext() bool {
-	if o != nil && o.Next.IsSet() {
+	if o != nil && o.Next != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNext gets a reference to the given NullableString and assigns it to the Next field.
+// SetNext gets a reference to the given string and assigns it to the Next field.
 func (o *Links) SetNext(v string) {
-	o.Next.Set(&v)
+	o.Next = &v
 }
 
-// SetNextNil sets the value for Next to be an explicit nil
-func (o *Links) SetNextNil() {
-	o.Next.Set(nil)
-}
-
-// UnsetNext ensures that no value is present for Next, not even an explicit nil
-func (o *Links) UnsetNext() {
-	o.Next.Unset()
-}
-
-// GetPrevious returns the Previous field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrevious returns the Previous field value if set, zero value otherwise.
 func (o *Links) GetPrevious() string {
-	if o == nil || o.Previous.Get() == nil {
+	if o == nil || o.Previous == nil {
 		var ret string
 		return ret
 	}
-	return *o.Previous.Get()
+	return *o.Previous
 }
 
 // GetPreviousOk returns a tuple with the Previous field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Links) GetPreviousOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Previous == nil {
 		return nil, false
 	}
-	return o.Previous.Get(), o.Previous.IsSet()
+	return o.Previous, true
 }
 
 // HasPrevious returns a boolean if a field has been set.
 func (o *Links) HasPrevious() bool {
-	if o != nil && o.Previous.IsSet() {
+	if o != nil && o.Previous != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPrevious gets a reference to the given NullableString and assigns it to the Previous field.
+// SetPrevious gets a reference to the given string and assigns it to the Previous field.
 func (o *Links) SetPrevious(v string) {
-	o.Previous.Set(&v)
+	o.Previous = &v
 }
 
-// SetPreviousNil sets the value for Previous to be an explicit nil
-func (o *Links) SetPreviousNil() {
-	o.Previous.Set(nil)
-}
-
-// UnsetPrevious ensures that no value is present for Previous, not even an explicit nil
-func (o *Links) UnsetPrevious() {
-	o.Previous.Unset()
-}
-
-// GetSelf returns the Self field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSelf returns the Self field value if set, zero value otherwise.
 func (o *Links) GetSelf() string {
-	if o == nil || o.Self.Get() == nil {
+	if o == nil || o.Self == nil {
 		var ret string
 		return ret
 	}
-	return *o.Self.Get()
+	return *o.Self
 }
 
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Links) GetSelfOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Self == nil {
 		return nil, false
 	}
-	return o.Self.Get(), o.Self.IsSet()
+	return o.Self, true
 }
 
 // HasSelf returns a boolean if a field has been set.
 func (o *Links) HasSelf() bool {
-	if o != nil && o.Self.IsSet() {
+	if o != nil && o.Self != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSelf gets a reference to the given NullableString and assigns it to the Self field.
+// SetSelf gets a reference to the given string and assigns it to the Self field.
 func (o *Links) SetSelf(v string) {
-	o.Self.Set(&v)
-}
-
-// SetSelfNil sets the value for Self to be an explicit nil
-func (o *Links) SetSelfNil() {
-	o.Self.Set(nil)
-}
-
-// UnsetSelf ensures that no value is present for Self, not even an explicit nil
-func (o *Links) UnsetSelf() {
-	o.Self.Unset()
+	o.Self = &v
 }
 
 func (o Links) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Next.IsSet() {
-		toSerialize["next"] = o.Next.Get()
+	if o.Next != nil {
+		toSerialize["next"] = o.Next
 	}
-	if o.Previous.IsSet() {
-		toSerialize["previous"] = o.Previous.Get()
+	if o.Previous != nil {
+		toSerialize["previous"] = o.Previous
 	}
-	if o.Self.IsSet() {
-		toSerialize["self"] = o.Self.Get()
+	if o.Self != nil {
+		toSerialize["self"] = o.Self
 	}
 	return json.Marshal(toSerialize)
 }

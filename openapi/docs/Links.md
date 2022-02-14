@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Next** | Pointer to **NullableString** |  | [optional] [default to "null"]
-**Previous** | Pointer to **NullableString** |  | [optional] [default to "null"]
-**Self** | Pointer to **NullableString** |  | [optional] [default to "null"]
+**Next** | Pointer to **string** |  | [optional] [default to "null"]
+**Previous** | Pointer to **string** |  | [optional] [default to "null"]
+**Self** | Pointer to **string** |  | [optional] [default to "null"]
 
 ## Methods
 
@@ -52,16 +52,6 @@ SetNext sets Next field to given value.
 
 HasNext returns a boolean if a field has been set.
 
-### SetNextNil
-
-`func (o *Links) SetNextNil(b bool)`
-
- SetNextNil sets the value for Next to be an explicit nil
-
-### UnsetNext
-`func (o *Links) UnsetNext()`
-
-UnsetNext ensures that no value is present for Next, not even an explicit nil
 ### GetPrevious
 
 `func (o *Links) GetPrevious() string`
@@ -87,16 +77,6 @@ SetPrevious sets Previous field to given value.
 
 HasPrevious returns a boolean if a field has been set.
 
-### SetPreviousNil
-
-`func (o *Links) SetPreviousNil(b bool)`
-
- SetPreviousNil sets the value for Previous to be an explicit nil
-
-### UnsetPrevious
-`func (o *Links) UnsetPrevious()`
-
-UnsetPrevious ensures that no value is present for Previous, not even an explicit nil
 ### GetSelf
 
 `func (o *Links) GetSelf() string`
@@ -122,16 +102,6 @@ SetSelf sets Self field to given value.
 
 HasSelf returns a boolean if a field has been set.
 
-### SetSelfNil
-
-`func (o *Links) SetSelfNil(b bool)`
-
- SetSelfNil sets the value for Self to be an explicit nil
-
-### UnsetSelf
-`func (o *Links) UnsetSelf()`
-
-UnsetSelf ensures that no value is present for Self, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,8 +21,8 @@ type Role struct {
 	// The role name.
 	Name *string `json:"name,omitempty"`
 	// The ID of the domain.
-	DomainId NullableString `json:"domain_id,omitempty"`
-	Links    *SelfLink      `json:"links,omitempty"`
+	DomainId *string   `json:"domain_id,omitempty"`
+	Links    *SelfLink `json:"links,omitempty"`
 	// The role description.
 	Description *string `json:"description,omitempty"`
 	// The role type in keystone.roles.extra.
@@ -110,47 +110,36 @@ func (o *Role) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDomainId returns the DomainId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDomainId returns the DomainId field value if set, zero value otherwise.
 func (o *Role) GetDomainId() string {
-	if o == nil || o.DomainId.Get() == nil {
+	if o == nil || o.DomainId == nil {
 		var ret string
 		return ret
 	}
-	return *o.DomainId.Get()
+	return *o.DomainId
 }
 
 // GetDomainIdOk returns a tuple with the DomainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Role) GetDomainIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.DomainId == nil {
 		return nil, false
 	}
-	return o.DomainId.Get(), o.DomainId.IsSet()
+	return o.DomainId, true
 }
 
 // HasDomainId returns a boolean if a field has been set.
 func (o *Role) HasDomainId() bool {
-	if o != nil && o.DomainId.IsSet() {
+	if o != nil && o.DomainId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDomainId gets a reference to the given NullableString and assigns it to the DomainId field.
+// SetDomainId gets a reference to the given string and assigns it to the DomainId field.
 func (o *Role) SetDomainId(v string) {
-	o.DomainId.Set(&v)
-}
-
-// SetDomainIdNil sets the value for DomainId to be an explicit nil
-func (o *Role) SetDomainIdNil() {
-	o.DomainId.Set(nil)
-}
-
-// UnsetDomainId ensures that no value is present for DomainId, not even an explicit nil
-func (o *Role) UnsetDomainId() {
-	o.DomainId.Unset()
+	o.DomainId = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
@@ -257,8 +246,8 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.DomainId.IsSet() {
-		toSerialize["domain_id"] = o.DomainId.Get()
+	if o.DomainId != nil {
+		toSerialize["domain_id"] = o.DomainId
 	}
 	if o.Links != nil {
 		toSerialize["links"] = o.Links

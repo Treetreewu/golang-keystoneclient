@@ -16,7 +16,7 @@ import (
 
 // SelfLink The links to the resource.
 type SelfLink struct {
-	Self NullableString `json:"self,omitempty"`
+	Self *string `json:"self,omitempty"`
 }
 
 // NewSelfLink instantiates a new SelfLink object
@@ -26,7 +26,7 @@ type SelfLink struct {
 func NewSelfLink() *SelfLink {
 	this := SelfLink{}
 	var self string = "null"
-	this.Self = *NewNullableString(&self)
+	this.Self = &self
 	return &this
 }
 
@@ -36,57 +36,46 @@ func NewSelfLink() *SelfLink {
 func NewSelfLinkWithDefaults() *SelfLink {
 	this := SelfLink{}
 	var self string = "null"
-	this.Self = *NewNullableString(&self)
+	this.Self = &self
 	return &this
 }
 
-// GetSelf returns the Self field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSelf returns the Self field value if set, zero value otherwise.
 func (o *SelfLink) GetSelf() string {
-	if o == nil || o.Self.Get() == nil {
+	if o == nil || o.Self == nil {
 		var ret string
 		return ret
 	}
-	return *o.Self.Get()
+	return *o.Self
 }
 
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SelfLink) GetSelfOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Self == nil {
 		return nil, false
 	}
-	return o.Self.Get(), o.Self.IsSet()
+	return o.Self, true
 }
 
 // HasSelf returns a boolean if a field has been set.
 func (o *SelfLink) HasSelf() bool {
-	if o != nil && o.Self.IsSet() {
+	if o != nil && o.Self != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSelf gets a reference to the given NullableString and assigns it to the Self field.
+// SetSelf gets a reference to the given string and assigns it to the Self field.
 func (o *SelfLink) SetSelf(v string) {
-	o.Self.Set(&v)
-}
-
-// SetSelfNil sets the value for Self to be an explicit nil
-func (o *SelfLink) SetSelfNil() {
-	o.Self.Set(nil)
-}
-
-// UnsetSelf ensures that no value is present for Self, not even an explicit nil
-func (o *SelfLink) UnsetSelf() {
-	o.Self.Unset()
+	o.Self = &v
 }
 
 func (o SelfLink) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Self.IsSet() {
-		toSerialize["self"] = o.Self.Get()
+	if o.Self != nil {
+		toSerialize["self"] = o.Self
 	}
 	return json.Marshal(toSerialize)
 }
