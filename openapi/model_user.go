@@ -12,7 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // User struct for User
@@ -34,10 +33,10 @@ type User struct {
 	Options     *UserOptions `json:"options,omitempty"`
 	Links       *SelfLink    `json:"links,omitempty"`
 	// The date and time when the password expires. The time zone is UTC.  This is a response object attribute; not valid for requests. A `null` value indicates that the password never expires.  New in version 3.7
-	PasswordExpiresAt    *time.Time `json:"password_expires_at,omitempty"`
-	UserType             *string    `json:"user_type,omitempty"`
-	UserRole             *string    `json:"user_role,omitempty"`
-	FailedAuthLoginCount *int32     `json:"failed_auth_login_count,omitempty"`
+	PasswordExpiresAt    *string `json:"password_expires_at,omitempty"`
+	UserType             *string `json:"user_type,omitempty"`
+	UserRole             *string `json:"user_role,omitempty"`
+	FailedAuthLoginCount *int32  `json:"failed_auth_login_count,omitempty"`
 	// Date time in `YYYYMMDDHHmm` format.
 	AuthLoginLockedEndTime *string `json:"auth_login_locked_end_time,omitempty"`
 	AuthLoginStartTime     *string `json:"auth_login_start_time,omitempty"`
@@ -381,9 +380,9 @@ func (o *User) SetLinks(v SelfLink) {
 }
 
 // GetPasswordExpiresAt returns the PasswordExpiresAt field value if set, zero value otherwise.
-func (o *User) GetPasswordExpiresAt() time.Time {
+func (o *User) GetPasswordExpiresAt() string {
 	if o == nil || o.PasswordExpiresAt == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.PasswordExpiresAt
@@ -391,7 +390,7 @@ func (o *User) GetPasswordExpiresAt() time.Time {
 
 // GetPasswordExpiresAtOk returns a tuple with the PasswordExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetPasswordExpiresAtOk() (*time.Time, bool) {
+func (o *User) GetPasswordExpiresAtOk() (*string, bool) {
 	if o == nil || o.PasswordExpiresAt == nil {
 		return nil, false
 	}
@@ -407,8 +406,8 @@ func (o *User) HasPasswordExpiresAt() bool {
 	return false
 }
 
-// SetPasswordExpiresAt gets a reference to the given time.Time and assigns it to the PasswordExpiresAt field.
-func (o *User) SetPasswordExpiresAt(v time.Time) {
+// SetPasswordExpiresAt gets a reference to the given string and assigns it to the PasswordExpiresAt field.
+func (o *User) SetPasswordExpiresAt(v string) {
 	o.PasswordExpiresAt = &v
 }
 

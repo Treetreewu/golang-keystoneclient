@@ -12,7 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // ApplicationCredential struct for ApplicationCredential
@@ -26,7 +25,7 @@ type ApplicationCredential struct {
 	// A description of the application credential’s purpose.
 	Description *string `json:"description,omitempty"`
 	// The expiration time of the application credential, if one was specified.
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	ExpiresAt *string `json:"expires_at,omitempty"`
 	// The ID of the project the application credential was created for and that authentication requests using this application credential will be scoped to.
 	ProjectId *string                      `json:"project_id,omitempty"`
 	Roles     *[]ApplicationCredentialRole `json:"roles,omitempty"`
@@ -183,9 +182,9 @@ func (o *ApplicationCredential) SetDescription(v string) {
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
-func (o *ApplicationCredential) GetExpiresAt() time.Time {
+func (o *ApplicationCredential) GetExpiresAt() string {
 	if o == nil || o.ExpiresAt == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.ExpiresAt
@@ -193,7 +192,7 @@ func (o *ApplicationCredential) GetExpiresAt() time.Time {
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationCredential) GetExpiresAtOk() (*time.Time, bool) {
+func (o *ApplicationCredential) GetExpiresAtOk() (*string, bool) {
 	if o == nil || o.ExpiresAt == nil {
 		return nil, false
 	}
@@ -209,8 +208,8 @@ func (o *ApplicationCredential) HasExpiresAt() bool {
 	return false
 }
 
-// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
-func (o *ApplicationCredential) SetExpiresAt(v time.Time) {
+// SetExpiresAt gets a reference to the given string and assigns it to the ExpiresAt field.
+func (o *ApplicationCredential) SetExpiresAt(v string) {
 	o.ExpiresAt = &v
 }
 

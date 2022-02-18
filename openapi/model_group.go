@@ -12,7 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // Group struct for Group
@@ -27,7 +26,7 @@ type Group struct {
 	// The name of the group.
 	Name *string `json:"name,omitempty"`
 	// The creation time.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
 }
 
 // NewGroup instantiates a new Group object
@@ -208,9 +207,9 @@ func (o *Group) SetName(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Group) GetCreatedAt() time.Time {
+func (o *Group) GetCreatedAt() string {
 	if o == nil || o.CreatedAt == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.CreatedAt
@@ -218,7 +217,7 @@ func (o *Group) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Group) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Group) GetCreatedAtOk() (*string, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -234,8 +233,8 @@ func (o *Group) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *Group) SetCreatedAt(v time.Time) {
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+func (o *Group) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 

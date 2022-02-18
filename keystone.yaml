@@ -747,7 +747,7 @@ paths:
                       type: string
                     created_at:
                       type: string
-                      format: date-time
+
                       description: The creation time of the group. Stored in `keystone.group.extra`.
                   required:
                     - name
@@ -2092,7 +2092,6 @@ paths:
                       description: A description of the application credential’s purpose.
                     expires_at:
                       type: string
-                      format: date-time
                       description: An optional expiry time for the application credential. If unset, the application credential does not expire.
                     roles:
                       type: array
@@ -2567,7 +2566,6 @@ components:
           type: string
         created_at:
           type: string
-          format: date-time
           description: The creation time.
       type: object
     links:
@@ -2687,7 +2685,6 @@ components:
           $ref: '#/components/schemas/self_link'
         password_expires_at:
           type: string
-          format: date-time
           description: |
             The date and time when the password expires. The time zone is UTC.
 
@@ -2772,7 +2769,6 @@ components:
           description: A description of the application credential’s purpose.
         expires_at:
           type: string
-          format: date-time
           description: The expiration time of the application credential, if one was specified.
         project_id:
           type: string

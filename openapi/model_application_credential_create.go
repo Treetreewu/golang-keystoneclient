@@ -12,7 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // ApplicationCredentialCreate struct for ApplicationCredentialCreate
@@ -24,7 +23,7 @@ type ApplicationCredentialCreate struct {
 	// A description of the application credential’s purpose.
 	Description *string `json:"description,omitempty"`
 	// An optional expiry time for the application credential. If unset, the application credential does not expire.
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	ExpiresAt *string `json:"expires_at,omitempty"`
 	// An optional list of role objects, identified by ID or name. The list may only contain roles that the user has assigned on the project. If not provided, the roles assigned to the application credential will be the same as the roles in the current token.
 	Roles *[]IdAndName `json:"roles,omitempty"`
 	// An optional flag to restrict whether the application credential may be used for the creation or destruction of other application credentials or trusts. Defaults to false.
@@ -140,9 +139,9 @@ func (o *ApplicationCredentialCreate) SetDescription(v string) {
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
-func (o *ApplicationCredentialCreate) GetExpiresAt() time.Time {
+func (o *ApplicationCredentialCreate) GetExpiresAt() string {
 	if o == nil || o.ExpiresAt == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.ExpiresAt
@@ -150,7 +149,7 @@ func (o *ApplicationCredentialCreate) GetExpiresAt() time.Time {
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationCredentialCreate) GetExpiresAtOk() (*time.Time, bool) {
+func (o *ApplicationCredentialCreate) GetExpiresAtOk() (*string, bool) {
 	if o == nil || o.ExpiresAt == nil {
 		return nil, false
 	}
@@ -166,8 +165,8 @@ func (o *ApplicationCredentialCreate) HasExpiresAt() bool {
 	return false
 }
 
-// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
-func (o *ApplicationCredentialCreate) SetExpiresAt(v time.Time) {
+// SetExpiresAt gets a reference to the given string and assigns it to the ExpiresAt field.
+func (o *ApplicationCredentialCreate) SetExpiresAt(v string) {
 	o.ExpiresAt = &v
 }
 

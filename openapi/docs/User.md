@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the user. | [optional] 
 **Options** | Pointer to [**UserOptions**](UserOptions.md) |  | [optional] 
 **Links** | Pointer to [**SelfLink**](SelfLink.md) |  | [optional] 
-**PasswordExpiresAt** | Pointer to **time.Time** | The date and time when the password expires. The time zone is UTC.  This is a response object attribute; not valid for requests. A &#x60;null&#x60; value indicates that the password never expires.  New in version 3.7  | [optional] 
+**PasswordExpiresAt** | Pointer to **string** | The date and time when the password expires. The time zone is UTC.  This is a response object attribute; not valid for requests. A &#x60;null&#x60; value indicates that the password never expires.  New in version 3.7  | [optional] 
 **UserType** | Pointer to **string** |  | [optional] 
 **UserRole** | Pointer to **string** |  | [optional] 
 **FailedAuthLoginCount** | Pointer to **int32** |  | [optional] 
@@ -292,20 +292,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetPasswordExpiresAt
 
-`func (o *User) GetPasswordExpiresAt() time.Time`
+`func (o *User) GetPasswordExpiresAt() string`
 
 GetPasswordExpiresAt returns the PasswordExpiresAt field if non-nil, zero value otherwise.
 
 ### GetPasswordExpiresAtOk
 
-`func (o *User) GetPasswordExpiresAtOk() (*time.Time, bool)`
+`func (o *User) GetPasswordExpiresAtOk() (*string, bool)`
 
 GetPasswordExpiresAtOk returns a tuple with the PasswordExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordExpiresAt
 
-`func (o *User) SetPasswordExpiresAt(v time.Time)`
+`func (o *User) SetPasswordExpiresAt(v string)`
 
 SetPasswordExpiresAt sets PasswordExpiresAt field to given value.
 

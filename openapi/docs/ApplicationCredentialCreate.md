@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the application credential. Must be unique to a user. | 
 **Secret** | Pointer to **string** | The secret that the application credential will be created with. If not provided, one will be generated. | [optional] 
 **Description** | Pointer to **string** | A description of the application credential’s purpose. | [optional] 
-**ExpiresAt** | Pointer to **time.Time** | An optional expiry time for the application credential. If unset, the application credential does not expire. | [optional] 
+**ExpiresAt** | Pointer to **string** | An optional expiry time for the application credential. If unset, the application credential does not expire. | [optional] 
 **Roles** | Pointer to [**[]IdAndName**](IdAndName.md) | An optional list of role objects, identified by ID or name. The list may only contain roles that the user has assigned on the project. If not provided, the roles assigned to the application credential will be the same as the roles in the current token. | [optional] 
 **Unrestricted** | Pointer to **bool** | An optional flag to restrict whether the application credential may be used for the creation or destruction of other application credentials or trusts. Defaults to false. | [optional] 
 **AccessRules** | Pointer to [**[]AccessRuleRequest**](AccessRuleRequest.md) | A list of &#x60;access_rules&#x60; objects | [optional] 
@@ -103,20 +103,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetExpiresAt
 
-`func (o *ApplicationCredentialCreate) GetExpiresAt() time.Time`
+`func (o *ApplicationCredentialCreate) GetExpiresAt() string`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *ApplicationCredentialCreate) GetExpiresAtOk() (*time.Time, bool)`
+`func (o *ApplicationCredentialCreate) GetExpiresAtOk() (*string, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *ApplicationCredentialCreate) SetExpiresAt(v time.Time)`
+`func (o *ApplicationCredentialCreate) SetExpiresAt(v string)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 

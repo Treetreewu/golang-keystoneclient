@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The ID of the group. | [optional] 
 **Links** | Pointer to [**SelfLink**](SelfLink.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the group. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | The creation time. | [optional] 
+**CreatedAt** | Pointer to **string** | The creation time. | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Group) GetCreatedAt() time.Time`
+`func (o *Group) GetCreatedAt() string`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Group) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Group) GetCreatedAtOk() (*string, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Group) SetCreatedAt(v time.Time)`
+`func (o *Group) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

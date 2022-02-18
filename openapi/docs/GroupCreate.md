@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | The description of the group. | [optional] 
 **DomainId** | Pointer to **string** | The ID of the domain of the group. If the domain ID is not provided in the request, the Identity service will attempt to pull the domain ID from the token used in the request. Note that this requires the use of a domain-scoped token. | [optional] 
 **Name** | **string** | The name of the group. | 
-**CreatedAt** | Pointer to **time.Time** | The creation time of the group. Stored in &#x60;keystone.group.extra&#x60;. | [optional] 
+**CreatedAt** | Pointer to **string** | The creation time of the group. Stored in &#x60;keystone.group.extra&#x60;. | [optional] 
 
 ## Methods
 
@@ -100,20 +100,20 @@ SetName sets Name field to given value.
 
 ### GetCreatedAt
 
-`func (o *GroupCreate) GetCreatedAt() time.Time`
+`func (o *GroupCreate) GetCreatedAt() string`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *GroupCreate) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *GroupCreate) GetCreatedAtOk() (*string, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *GroupCreate) SetCreatedAt(v time.Time)`
+`func (o *GroupCreate) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

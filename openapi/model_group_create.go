@@ -12,7 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // GroupCreate struct for GroupCreate
@@ -24,7 +23,7 @@ type GroupCreate struct {
 	// The name of the group.
 	Name string `json:"name"`
 	// The creation time of the group. Stored in `keystone.group.extra`.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
 }
 
 // NewGroupCreate instantiates a new GroupCreate object
@@ -134,9 +133,9 @@ func (o *GroupCreate) SetName(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *GroupCreate) GetCreatedAt() time.Time {
+func (o *GroupCreate) GetCreatedAt() string {
 	if o == nil || o.CreatedAt == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.CreatedAt
@@ -144,7 +143,7 @@ func (o *GroupCreate) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupCreate) GetCreatedAtOk() (*time.Time, bool) {
+func (o *GroupCreate) GetCreatedAtOk() (*string, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -160,8 +159,8 @@ func (o *GroupCreate) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *GroupCreate) SetCreatedAt(v time.Time) {
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+func (o *GroupCreate) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
