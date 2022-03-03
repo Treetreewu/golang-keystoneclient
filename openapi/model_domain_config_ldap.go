@@ -46,7 +46,7 @@ type DomainConfigLdap struct {
 	// If enabled, keystone is allowed to delete users in the LDAP server.
 	UserAllowDelete *bool `json:"user_allow_delete,omitempty"`
 	// set 0 to disable pagination
-	PageSize   *int32  `json:"page_size,omitempty"`
+	PageSize   *string `json:"page_size,omitempty"`
 	UserFilter *string `json:"user_filter,omitempty"`
 }
 
@@ -76,7 +76,7 @@ func NewDomainConfigLdap() *DomainConfigLdap {
 	this.UserAllowUpdate = &userAllowUpdate
 	var userAllowDelete bool = true
 	this.UserAllowDelete = &userAllowDelete
-	var pageSize int32 = 0
+	var pageSize string = "0"
 	this.PageSize = &pageSize
 	return &this
 }
@@ -106,7 +106,7 @@ func NewDomainConfigLdapWithDefaults() *DomainConfigLdap {
 	this.UserAllowUpdate = &userAllowUpdate
 	var userAllowDelete bool = true
 	this.UserAllowDelete = &userAllowDelete
-	var pageSize int32 = 0
+	var pageSize string = "0"
 	this.PageSize = &pageSize
 	return &this
 }
@@ -624,9 +624,9 @@ func (o *DomainConfigLdap) SetUserAllowDelete(v bool) {
 }
 
 // GetPageSize returns the PageSize field value if set, zero value otherwise.
-func (o *DomainConfigLdap) GetPageSize() int32 {
+func (o *DomainConfigLdap) GetPageSize() string {
 	if o == nil || o.PageSize == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.PageSize
@@ -634,7 +634,7 @@ func (o *DomainConfigLdap) GetPageSize() int32 {
 
 // GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainConfigLdap) GetPageSizeOk() (*int32, bool) {
+func (o *DomainConfigLdap) GetPageSizeOk() (*string, bool) {
 	if o == nil || o.PageSize == nil {
 		return nil, false
 	}
@@ -650,8 +650,8 @@ func (o *DomainConfigLdap) HasPageSize() bool {
 	return false
 }
 
-// SetPageSize gets a reference to the given int32 and assigns it to the PageSize field.
-func (o *DomainConfigLdap) SetPageSize(v int32) {
+// SetPageSize gets a reference to the given string and assigns it to the PageSize field.
+func (o *DomainConfigLdap) SetPageSize(v string) {
 	o.PageSize = &v
 }
 

@@ -1,4 +1,4 @@
-# Copyright 2017 EasyStack, Inc.
+# Copyright 2022 EasyStack, Inc.
 
 rm -rf openapi
 

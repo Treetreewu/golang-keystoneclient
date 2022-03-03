@@ -8,9 +8,9 @@ Another OAS `token.json` is not used for now because the `openapi-generator-cli 
 The `options` parameter in some APIs is not supported. 
 ## Build
 ```shell
-docker run --rm -v $(pwd)/keystone.yaml:/tmp/keystone.yaml -v $(pwd):/tmp/keystone openapitools/openapi-generator-cli generate -i /tmp/keystone.yaml -g go -o /tmp/keystone/openapi
-rm -f ./openapi/go.mod ./openapi/go.sum
+./build.sh
 ```
+
 ### Note
 For openapi-generator-cli does not support `oneOf` schema, define `OneOfstringprojectResponse` in `model_project_get.go`
 ```go

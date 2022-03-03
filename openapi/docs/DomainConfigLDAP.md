@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **UserAllowCreate** | Pointer to **bool** | If enabled, keystone is allowed to create users in the LDAP server. | [optional] [default to true]
 **UserAllowUpdate** | Pointer to **bool** | If enabled, keystone is allowed to update users in the LDAP server. | [optional] [default to true]
 **UserAllowDelete** | Pointer to **bool** | If enabled, keystone is allowed to delete users in the LDAP server. | [optional] [default to true]
-**PageSize** | Pointer to **int32** | set 0 to disable pagination | [optional] [default to 0]
+**PageSize** | Pointer to **string** | set 0 to disable pagination | [optional] [default to "0"]
 **UserFilter** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -444,20 +444,20 @@ HasUserAllowDelete returns a boolean if a field has been set.
 
 ### GetPageSize
 
-`func (o *DomainConfigLdap) GetPageSize() int32`
+`func (o *DomainConfigLdap) GetPageSize() string`
 
 GetPageSize returns the PageSize field if non-nil, zero value otherwise.
 
 ### GetPageSizeOk
 
-`func (o *DomainConfigLdap) GetPageSizeOk() (*int32, bool)`
+`func (o *DomainConfigLdap) GetPageSizeOk() (*string, bool)`
 
 GetPageSizeOk returns a tuple with the PageSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPageSize
 
-`func (o *DomainConfigLdap) SetPageSize(v int32)`
+`func (o *DomainConfigLdap) SetPageSize(v string)`
 
 SetPageSize sets PageSize field to given value.
 

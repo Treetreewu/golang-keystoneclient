@@ -2573,9 +2573,9 @@ components:
           default: true
           description: If enabled, keystone is allowed to delete users in the LDAP server.
         page_size:
-          type: integer
-          default: 0
-          example: 0
+          type: string
+          default: "0"
+          example: "0"
           description: set 0 to disable pagination
         user_filter:
           type: string
