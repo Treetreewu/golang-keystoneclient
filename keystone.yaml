@@ -2502,6 +2502,8 @@ components:
         password:
           type: string
           format: password
+        suffix:
+          type: string
         query_scope:
           type: string
           example: one
@@ -2511,21 +2513,69 @@ components:
           type: string
           default: organizationalPerson
           example: organizationalPerson
+          description: The LDAP object class to use for users.
         user_id_attribute:
           type: string
           default: cn
           example: cn
+          description: |
+            The LDAP attribute mapped to user IDs in keystone. This must NOT be a
+            multivalued attribute. User IDs are expected to be globally unique across
+            keystone domains and URL-safe.
         user_name_attribute:
           type: string
-          example: cn
-          default: cn
+          example: sn
+          default: sn
+          description: |
+            The LDAP attribute mapped to user names in keystone. User names are expected to
+            be unique only within a keystone domain and are not expected to be URL-safe.
         user_mail_attribute:
           type: string
           example: mail
           default: mail
-        page_size:
+          description: The LDAP attribute mapped to user emails in keystone.
+        user_password_attribute:
           type: string
-          example: '0'
+          example: userPassword
+          default: userPassword
+          description: The LDAP attribute mapped to user passwords in keystone.
+        user_enabled_mask:
+          type: integer
+          example: 0
+          default: 2
+          description: |
+            Bitmask integer to select which bit indicates the enabled value if the LDAP
+            server represents "enabled" as a bit on an integer rather than as a discrete
+            boolean. A value of `0` indicates that the mask is not used. If this is not set
+            to `0` the typical value is `2`. This is typically used when `[ldap]
+            user_enabled_attribute = userAccountControl`. Setting this option causes
+            keystone to ignore the value of `[ldap] user_enabled_invert`.
+        user_enabled_default:
+          type: string
+          default: True
+          example: '512'
+          description: |
+            The default value to enable users. This should match an appropriate integer
+            value if the LDAP server uses non-boolean (bitmask) values to indicate if a
+            user is enabled or disabled. If this is not set to `True`, then the typical
+            value is `512`. This is typically used when `[ldap] user_enabled_attribute =
+            userAccountControl`.
+        user_allow_create:
+          type: boolean
+          default: true
+          description: If enabled, keystone is allowed to create users in the LDAP server.
+        user_allow_update:
+          type: boolean
+          default: true
+          description: If enabled, keystone is allowed to update users in the LDAP server.
+        user_allow_delete:
+          type: boolean
+          default: true
+          description: If enabled, keystone is allowed to delete users in the LDAP server.
+        page_size:
+          type: integer
+          default: 0
+          example: 0
           description: set 0 to disable pagination
         user_filter:
           type: string

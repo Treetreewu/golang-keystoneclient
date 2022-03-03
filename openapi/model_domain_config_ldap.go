@@ -22,14 +22,31 @@ type DomainConfigLdap struct {
 	UserTreeDn *string `json:"user_tree_dn,omitempty"`
 	User       *string `json:"user,omitempty"`
 	Password   *string `json:"password,omitempty"`
+	Suffix     *string `json:"suffix,omitempty"`
 	// 定义了在搜索基中搜索的深度。值“one”表示对下面紧接基准对象的对象搜索，但不包括基准对象本身。 值“sub”表示同时搜索基准对象本身和它下面的整个子树。
-	QueryScope        *string `json:"query_scope,omitempty"`
-	UserObjectclass   *string `json:"user_objectclass,omitempty"`
-	UserIdAttribute   *string `json:"user_id_attribute,omitempty"`
+	QueryScope *string `json:"query_scope,omitempty"`
+	// The LDAP object class to use for users.
+	UserObjectclass *string `json:"user_objectclass,omitempty"`
+	// The LDAP attribute mapped to user IDs in keystone. This must NOT be a multivalued attribute. User IDs are expected to be globally unique across keystone domains and URL-safe.
+	UserIdAttribute *string `json:"user_id_attribute,omitempty"`
+	// The LDAP attribute mapped to user names in keystone. User names are expected to be unique only within a keystone domain and are not expected to be URL-safe.
 	UserNameAttribute *string `json:"user_name_attribute,omitempty"`
+	// The LDAP attribute mapped to user emails in keystone.
 	UserMailAttribute *string `json:"user_mail_attribute,omitempty"`
+	// The LDAP attribute mapped to user passwords in keystone.
+	UserPasswordAttribute *string `json:"user_password_attribute,omitempty"`
+	// Bitmask integer to select which bit indicates the enabled value if the LDAP server represents \"enabled\" as a bit on an integer rather than as a discrete boolean. A value of `0` indicates that the mask is not used. If this is not set to `0` the typical value is `2`. This is typically used when `[ldap] user_enabled_attribute = userAccountControl`. Setting this option causes keystone to ignore the value of `[ldap] user_enabled_invert`.
+	UserEnabledMask *int32 `json:"user_enabled_mask,omitempty"`
+	// The default value to enable users. This should match an appropriate integer value if the LDAP server uses non-boolean (bitmask) values to indicate if a user is enabled or disabled. If this is not set to `True`, then the typical value is `512`. This is typically used when `[ldap] user_enabled_attribute = userAccountControl`.
+	UserEnabledDefault *string `json:"user_enabled_default,omitempty"`
+	// If enabled, keystone is allowed to create users in the LDAP server.
+	UserAllowCreate *bool `json:"user_allow_create,omitempty"`
+	// If enabled, keystone is allowed to update users in the LDAP server.
+	UserAllowUpdate *bool `json:"user_allow_update,omitempty"`
+	// If enabled, keystone is allowed to delete users in the LDAP server.
+	UserAllowDelete *bool `json:"user_allow_delete,omitempty"`
 	// set 0 to disable pagination
-	PageSize   *string `json:"page_size,omitempty"`
+	PageSize   *int32  `json:"page_size,omitempty"`
 	UserFilter *string `json:"user_filter,omitempty"`
 }
 
@@ -43,10 +60,24 @@ func NewDomainConfigLdap() *DomainConfigLdap {
 	this.UserObjectclass = &userObjectclass
 	var userIdAttribute string = "cn"
 	this.UserIdAttribute = &userIdAttribute
-	var userNameAttribute string = "cn"
+	var userNameAttribute string = "sn"
 	this.UserNameAttribute = &userNameAttribute
 	var userMailAttribute string = "mail"
 	this.UserMailAttribute = &userMailAttribute
+	var userPasswordAttribute string = "userPassword"
+	this.UserPasswordAttribute = &userPasswordAttribute
+	var userEnabledMask int32 = 2
+	this.UserEnabledMask = &userEnabledMask
+	var userEnabledDefault string = "true"
+	this.UserEnabledDefault = &userEnabledDefault
+	var userAllowCreate bool = true
+	this.UserAllowCreate = &userAllowCreate
+	var userAllowUpdate bool = true
+	this.UserAllowUpdate = &userAllowUpdate
+	var userAllowDelete bool = true
+	this.UserAllowDelete = &userAllowDelete
+	var pageSize int32 = 0
+	this.PageSize = &pageSize
 	return &this
 }
 
@@ -59,10 +90,24 @@ func NewDomainConfigLdapWithDefaults() *DomainConfigLdap {
 	this.UserObjectclass = &userObjectclass
 	var userIdAttribute string = "cn"
 	this.UserIdAttribute = &userIdAttribute
-	var userNameAttribute string = "cn"
+	var userNameAttribute string = "sn"
 	this.UserNameAttribute = &userNameAttribute
 	var userMailAttribute string = "mail"
 	this.UserMailAttribute = &userMailAttribute
+	var userPasswordAttribute string = "userPassword"
+	this.UserPasswordAttribute = &userPasswordAttribute
+	var userEnabledMask int32 = 2
+	this.UserEnabledMask = &userEnabledMask
+	var userEnabledDefault string = "true"
+	this.UserEnabledDefault = &userEnabledDefault
+	var userAllowCreate bool = true
+	this.UserAllowCreate = &userAllowCreate
+	var userAllowUpdate bool = true
+	this.UserAllowUpdate = &userAllowUpdate
+	var userAllowDelete bool = true
+	this.UserAllowDelete = &userAllowDelete
+	var pageSize int32 = 0
+	this.PageSize = &pageSize
 	return &this
 }
 
@@ -192,6 +237,38 @@ func (o *DomainConfigLdap) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *DomainConfigLdap) SetPassword(v string) {
 	o.Password = &v
+}
+
+// GetSuffix returns the Suffix field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetSuffix() string {
+	if o == nil || o.Suffix == nil {
+		var ret string
+		return ret
+	}
+	return *o.Suffix
+}
+
+// GetSuffixOk returns a tuple with the Suffix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLdap) GetSuffixOk() (*string, bool) {
+	if o == nil || o.Suffix == nil {
+		return nil, false
+	}
+	return o.Suffix, true
+}
+
+// HasSuffix returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasSuffix() bool {
+	if o != nil && o.Suffix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSuffix gets a reference to the given string and assigns it to the Suffix field.
+func (o *DomainConfigLdap) SetSuffix(v string) {
+	o.Suffix = &v
 }
 
 // GetQueryScope returns the QueryScope field value if set, zero value otherwise.
@@ -354,10 +431,202 @@ func (o *DomainConfigLdap) SetUserMailAttribute(v string) {
 	o.UserMailAttribute = &v
 }
 
-// GetPageSize returns the PageSize field value if set, zero value otherwise.
-func (o *DomainConfigLdap) GetPageSize() string {
-	if o == nil || o.PageSize == nil {
+// GetUserPasswordAttribute returns the UserPasswordAttribute field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetUserPasswordAttribute() string {
+	if o == nil || o.UserPasswordAttribute == nil {
 		var ret string
+		return ret
+	}
+	return *o.UserPasswordAttribute
+}
+
+// GetUserPasswordAttributeOk returns a tuple with the UserPasswordAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLdap) GetUserPasswordAttributeOk() (*string, bool) {
+	if o == nil || o.UserPasswordAttribute == nil {
+		return nil, false
+	}
+	return o.UserPasswordAttribute, true
+}
+
+// HasUserPasswordAttribute returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasUserPasswordAttribute() bool {
+	if o != nil && o.UserPasswordAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPasswordAttribute gets a reference to the given string and assigns it to the UserPasswordAttribute field.
+func (o *DomainConfigLdap) SetUserPasswordAttribute(v string) {
+	o.UserPasswordAttribute = &v
+}
+
+// GetUserEnabledMask returns the UserEnabledMask field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetUserEnabledMask() int32 {
+	if o == nil || o.UserEnabledMask == nil {
+		var ret int32
+		return ret
+	}
+	return *o.UserEnabledMask
+}
+
+// GetUserEnabledMaskOk returns a tuple with the UserEnabledMask field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLdap) GetUserEnabledMaskOk() (*int32, bool) {
+	if o == nil || o.UserEnabledMask == nil {
+		return nil, false
+	}
+	return o.UserEnabledMask, true
+}
+
+// HasUserEnabledMask returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasUserEnabledMask() bool {
+	if o != nil && o.UserEnabledMask != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserEnabledMask gets a reference to the given int32 and assigns it to the UserEnabledMask field.
+func (o *DomainConfigLdap) SetUserEnabledMask(v int32) {
+	o.UserEnabledMask = &v
+}
+
+// GetUserEnabledDefault returns the UserEnabledDefault field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetUserEnabledDefault() string {
+	if o == nil || o.UserEnabledDefault == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserEnabledDefault
+}
+
+// GetUserEnabledDefaultOk returns a tuple with the UserEnabledDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLdap) GetUserEnabledDefaultOk() (*string, bool) {
+	if o == nil || o.UserEnabledDefault == nil {
+		return nil, false
+	}
+	return o.UserEnabledDefault, true
+}
+
+// HasUserEnabledDefault returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasUserEnabledDefault() bool {
+	if o != nil && o.UserEnabledDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserEnabledDefault gets a reference to the given string and assigns it to the UserEnabledDefault field.
+func (o *DomainConfigLdap) SetUserEnabledDefault(v string) {
+	o.UserEnabledDefault = &v
+}
+
+// GetUserAllowCreate returns the UserAllowCreate field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetUserAllowCreate() bool {
+	if o == nil || o.UserAllowCreate == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UserAllowCreate
+}
+
+// GetUserAllowCreateOk returns a tuple with the UserAllowCreate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLdap) GetUserAllowCreateOk() (*bool, bool) {
+	if o == nil || o.UserAllowCreate == nil {
+		return nil, false
+	}
+	return o.UserAllowCreate, true
+}
+
+// HasUserAllowCreate returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasUserAllowCreate() bool {
+	if o != nil && o.UserAllowCreate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAllowCreate gets a reference to the given bool and assigns it to the UserAllowCreate field.
+func (o *DomainConfigLdap) SetUserAllowCreate(v bool) {
+	o.UserAllowCreate = &v
+}
+
+// GetUserAllowUpdate returns the UserAllowUpdate field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetUserAllowUpdate() bool {
+	if o == nil || o.UserAllowUpdate == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UserAllowUpdate
+}
+
+// GetUserAllowUpdateOk returns a tuple with the UserAllowUpdate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLdap) GetUserAllowUpdateOk() (*bool, bool) {
+	if o == nil || o.UserAllowUpdate == nil {
+		return nil, false
+	}
+	return o.UserAllowUpdate, true
+}
+
+// HasUserAllowUpdate returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasUserAllowUpdate() bool {
+	if o != nil && o.UserAllowUpdate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAllowUpdate gets a reference to the given bool and assigns it to the UserAllowUpdate field.
+func (o *DomainConfigLdap) SetUserAllowUpdate(v bool) {
+	o.UserAllowUpdate = &v
+}
+
+// GetUserAllowDelete returns the UserAllowDelete field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetUserAllowDelete() bool {
+	if o == nil || o.UserAllowDelete == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UserAllowDelete
+}
+
+// GetUserAllowDeleteOk returns a tuple with the UserAllowDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DomainConfigLdap) GetUserAllowDeleteOk() (*bool, bool) {
+	if o == nil || o.UserAllowDelete == nil {
+		return nil, false
+	}
+	return o.UserAllowDelete, true
+}
+
+// HasUserAllowDelete returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasUserAllowDelete() bool {
+	if o != nil && o.UserAllowDelete != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAllowDelete gets a reference to the given bool and assigns it to the UserAllowDelete field.
+func (o *DomainConfigLdap) SetUserAllowDelete(v bool) {
+	o.UserAllowDelete = &v
+}
+
+// GetPageSize returns the PageSize field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetPageSize() int32 {
+	if o == nil || o.PageSize == nil {
+		var ret int32
 		return ret
 	}
 	return *o.PageSize
@@ -365,7 +634,7 @@ func (o *DomainConfigLdap) GetPageSize() string {
 
 // GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainConfigLdap) GetPageSizeOk() (*string, bool) {
+func (o *DomainConfigLdap) GetPageSizeOk() (*int32, bool) {
 	if o == nil || o.PageSize == nil {
 		return nil, false
 	}
@@ -381,8 +650,8 @@ func (o *DomainConfigLdap) HasPageSize() bool {
 	return false
 }
 
-// SetPageSize gets a reference to the given string and assigns it to the PageSize field.
-func (o *DomainConfigLdap) SetPageSize(v string) {
+// SetPageSize gets a reference to the given int32 and assigns it to the PageSize field.
+func (o *DomainConfigLdap) SetPageSize(v int32) {
 	o.PageSize = &v
 }
 
@@ -432,6 +701,9 @@ func (o DomainConfigLdap) MarshalJSON() ([]byte, error) {
 	if o.Password != nil {
 		toSerialize["password"] = o.Password
 	}
+	if o.Suffix != nil {
+		toSerialize["suffix"] = o.Suffix
+	}
 	if o.QueryScope != nil {
 		toSerialize["query_scope"] = o.QueryScope
 	}
@@ -446,6 +718,24 @@ func (o DomainConfigLdap) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserMailAttribute != nil {
 		toSerialize["user_mail_attribute"] = o.UserMailAttribute
+	}
+	if o.UserPasswordAttribute != nil {
+		toSerialize["user_password_attribute"] = o.UserPasswordAttribute
+	}
+	if o.UserEnabledMask != nil {
+		toSerialize["user_enabled_mask"] = o.UserEnabledMask
+	}
+	if o.UserEnabledDefault != nil {
+		toSerialize["user_enabled_default"] = o.UserEnabledDefault
+	}
+	if o.UserAllowCreate != nil {
+		toSerialize["user_allow_create"] = o.UserAllowCreate
+	}
+	if o.UserAllowUpdate != nil {
+		toSerialize["user_allow_update"] = o.UserAllowUpdate
+	}
+	if o.UserAllowDelete != nil {
+		toSerialize["user_allow_delete"] = o.UserAllowDelete
 	}
 	if o.PageSize != nil {
 		toSerialize["page_size"] = o.PageSize
