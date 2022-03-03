@@ -361,7 +361,7 @@ No authorization required
 
 ## ListUsers
 
-> UserListResponse ListUsers(ctx).DomainId(domainId).Name(name).Enabled(enabled).PasswordExpiresAt(passwordExpiresAt).IdpId(idpId).ProtocolId(protocolId).UniqueId(uniqueId).Execute()
+> UserListResponse ListUsers(ctx).DomainId(domainId).Name(name).Enabled(enabled).PasswordExpiresAt(passwordExpiresAt).IdpId(idpId).ProtocolId(protocolId).UniqueId(uniqueId).SkipCache(skipCache).Execute()
 
 
 
@@ -387,10 +387,11 @@ func main() {
     idpId := "idpId_example" // string | Filters the response by an identity provider ID. (optional)
     protocolId := "protocolId_example" // string | Filters the response by a protocol id. (optional)
     uniqueId := "uniqueId_example" // string | Filters the response by a unique id. (optional)
+    skipCache := true // bool |  (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.UserApi.ListUsers(context.Background()).DomainId(domainId).Name(name).Enabled(enabled).PasswordExpiresAt(passwordExpiresAt).IdpId(idpId).ProtocolId(protocolId).UniqueId(uniqueId).Execute()
+    resp, r, err := api_client.UserApi.ListUsers(context.Background()).DomainId(domainId).Name(name).Enabled(enabled).PasswordExpiresAt(passwordExpiresAt).IdpId(idpId).ProtocolId(protocolId).UniqueId(uniqueId).SkipCache(skipCache).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ListUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,6 +419,7 @@ Name | Type | Description  | Notes
  **idpId** | **string** | Filters the response by an identity provider ID. | 
  **protocolId** | **string** | Filters the response by a protocol id. | 
  **uniqueId** | **string** | Filters the response by a unique id. | 
+ **skipCache** | **bool** |  | [default to false]
 
 ### Return type
 

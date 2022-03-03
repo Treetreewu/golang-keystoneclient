@@ -750,6 +750,7 @@ type ApiListUsersRequest struct {
 	idpId             *string
 	protocolId        *string
 	uniqueId          *string
+	skipCache         *bool
 }
 
 // Filters the response by a domain ID.
@@ -791,6 +792,10 @@ func (r ApiListUsersRequest) ProtocolId(protocolId string) ApiListUsersRequest {
 // Filters the response by a unique id.
 func (r ApiListUsersRequest) UniqueId(uniqueId string) ApiListUsersRequest {
 	r.uniqueId = &uniqueId
+	return r
+}
+func (r ApiListUsersRequest) SkipCache(skipCache bool) ApiListUsersRequest {
+	r.skipCache = &skipCache
 	return r
 }
 
@@ -856,6 +861,9 @@ func (a *UserApiService) ListUsersExecute(r ApiListUsersRequest) (UserListRespon
 	}
 	if r.uniqueId != nil {
 		localVarQueryParams.Add("unique_id", parameterToString(*r.uniqueId, ""))
+	}
+	if r.skipCache != nil {
+		localVarQueryParams.Add("skip_cache", parameterToString(*r.skipCache, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
