@@ -2544,9 +2544,9 @@ components:
           default: userPassword
           description: The LDAP attribute mapped to user passwords in keystone.
         user_enabled_mask:
-          type: integer
-          example: 0
-          default: 2
+          type: string
+          example: '0'
+          default: '2'
           description: |
             Bitmask integer to select which bit indicates the enabled value if the LDAP
             server represents "enabled" as a bit on an integer rather than as a discrete
@@ -2565,16 +2565,16 @@ components:
             value is `512`. This is typically used when `[ldap] user_enabled_attribute =
             userAccountControl`.
         user_allow_create:
-          type: boolean
-          default: true
+          type: string
+          default: True
           description: If enabled, keystone is allowed to create users in the LDAP server.
         user_allow_update:
-          type: boolean
-          default: true
+          type: string
+          default: True
           description: If enabled, keystone is allowed to update users in the LDAP server.
         user_allow_delete:
-          type: boolean
-          default: true
+          type: string
+          default: True
           description: If enabled, keystone is allowed to delete users in the LDAP server.
         page_size:
           type: string

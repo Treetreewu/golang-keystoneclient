@@ -15,11 +15,11 @@ Name | Type | Description | Notes
 **UserNameAttribute** | Pointer to **string** | The LDAP attribute mapped to user names in keystone. User names are expected to be unique only within a keystone domain and are not expected to be URL-safe.  | [optional] [default to "sn"]
 **UserMailAttribute** | Pointer to **string** | The LDAP attribute mapped to user emails in keystone. | [optional] [default to "mail"]
 **UserPasswordAttribute** | Pointer to **string** | The LDAP attribute mapped to user passwords in keystone. | [optional] [default to "userPassword"]
-**UserEnabledMask** | Pointer to **int32** | Bitmask integer to select which bit indicates the enabled value if the LDAP server represents \&quot;enabled\&quot; as a bit on an integer rather than as a discrete boolean. A value of &#x60;0&#x60; indicates that the mask is not used. If this is not set to &#x60;0&#x60; the typical value is &#x60;2&#x60;. This is typically used when &#x60;[ldap] user_enabled_attribute &#x3D; userAccountControl&#x60;. Setting this option causes keystone to ignore the value of &#x60;[ldap] user_enabled_invert&#x60;.  | [optional] [default to 2]
+**UserEnabledMask** | Pointer to **string** | Bitmask integer to select which bit indicates the enabled value if the LDAP server represents \&quot;enabled\&quot; as a bit on an integer rather than as a discrete boolean. A value of &#x60;0&#x60; indicates that the mask is not used. If this is not set to &#x60;0&#x60; the typical value is &#x60;2&#x60;. This is typically used when &#x60;[ldap] user_enabled_attribute &#x3D; userAccountControl&#x60;. Setting this option causes keystone to ignore the value of &#x60;[ldap] user_enabled_invert&#x60;.  | [optional] [default to "2"]
 **UserEnabledDefault** | Pointer to **string** | The default value to enable users. This should match an appropriate integer value if the LDAP server uses non-boolean (bitmask) values to indicate if a user is enabled or disabled. If this is not set to &#x60;True&#x60;, then the typical value is &#x60;512&#x60;. This is typically used when &#x60;[ldap] user_enabled_attribute &#x3D; userAccountControl&#x60;.  | [optional] [default to "true"]
-**UserAllowCreate** | Pointer to **bool** | If enabled, keystone is allowed to create users in the LDAP server. | [optional] [default to true]
-**UserAllowUpdate** | Pointer to **bool** | If enabled, keystone is allowed to update users in the LDAP server. | [optional] [default to true]
-**UserAllowDelete** | Pointer to **bool** | If enabled, keystone is allowed to delete users in the LDAP server. | [optional] [default to true]
+**UserAllowCreate** | Pointer to **string** | If enabled, keystone is allowed to create users in the LDAP server. | [optional] [default to "true"]
+**UserAllowUpdate** | Pointer to **string** | If enabled, keystone is allowed to update users in the LDAP server. | [optional] [default to "true"]
+**UserAllowDelete** | Pointer to **string** | If enabled, keystone is allowed to delete users in the LDAP server. | [optional] [default to "true"]
 **PageSize** | Pointer to **string** | set 0 to disable pagination | [optional] [default to "0"]
 **UserFilter** | Pointer to **string** |  | [optional] 
 
@@ -319,20 +319,20 @@ HasUserPasswordAttribute returns a boolean if a field has been set.
 
 ### GetUserEnabledMask
 
-`func (o *DomainConfigLdap) GetUserEnabledMask() int32`
+`func (o *DomainConfigLdap) GetUserEnabledMask() string`
 
 GetUserEnabledMask returns the UserEnabledMask field if non-nil, zero value otherwise.
 
 ### GetUserEnabledMaskOk
 
-`func (o *DomainConfigLdap) GetUserEnabledMaskOk() (*int32, bool)`
+`func (o *DomainConfigLdap) GetUserEnabledMaskOk() (*string, bool)`
 
 GetUserEnabledMaskOk returns a tuple with the UserEnabledMask field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserEnabledMask
 
-`func (o *DomainConfigLdap) SetUserEnabledMask(v int32)`
+`func (o *DomainConfigLdap) SetUserEnabledMask(v string)`
 
 SetUserEnabledMask sets UserEnabledMask field to given value.
 
@@ -369,20 +369,20 @@ HasUserEnabledDefault returns a boolean if a field has been set.
 
 ### GetUserAllowCreate
 
-`func (o *DomainConfigLdap) GetUserAllowCreate() bool`
+`func (o *DomainConfigLdap) GetUserAllowCreate() string`
 
 GetUserAllowCreate returns the UserAllowCreate field if non-nil, zero value otherwise.
 
 ### GetUserAllowCreateOk
 
-`func (o *DomainConfigLdap) GetUserAllowCreateOk() (*bool, bool)`
+`func (o *DomainConfigLdap) GetUserAllowCreateOk() (*string, bool)`
 
 GetUserAllowCreateOk returns a tuple with the UserAllowCreate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserAllowCreate
 
-`func (o *DomainConfigLdap) SetUserAllowCreate(v bool)`
+`func (o *DomainConfigLdap) SetUserAllowCreate(v string)`
 
 SetUserAllowCreate sets UserAllowCreate field to given value.
 
@@ -394,20 +394,20 @@ HasUserAllowCreate returns a boolean if a field has been set.
 
 ### GetUserAllowUpdate
 
-`func (o *DomainConfigLdap) GetUserAllowUpdate() bool`
+`func (o *DomainConfigLdap) GetUserAllowUpdate() string`
 
 GetUserAllowUpdate returns the UserAllowUpdate field if non-nil, zero value otherwise.
 
 ### GetUserAllowUpdateOk
 
-`func (o *DomainConfigLdap) GetUserAllowUpdateOk() (*bool, bool)`
+`func (o *DomainConfigLdap) GetUserAllowUpdateOk() (*string, bool)`
 
 GetUserAllowUpdateOk returns a tuple with the UserAllowUpdate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserAllowUpdate
 
-`func (o *DomainConfigLdap) SetUserAllowUpdate(v bool)`
+`func (o *DomainConfigLdap) SetUserAllowUpdate(v string)`
 
 SetUserAllowUpdate sets UserAllowUpdate field to given value.
 
@@ -419,20 +419,20 @@ HasUserAllowUpdate returns a boolean if a field has been set.
 
 ### GetUserAllowDelete
 
-`func (o *DomainConfigLdap) GetUserAllowDelete() bool`
+`func (o *DomainConfigLdap) GetUserAllowDelete() string`
 
 GetUserAllowDelete returns the UserAllowDelete field if non-nil, zero value otherwise.
 
 ### GetUserAllowDeleteOk
 
-`func (o *DomainConfigLdap) GetUserAllowDeleteOk() (*bool, bool)`
+`func (o *DomainConfigLdap) GetUserAllowDeleteOk() (*string, bool)`
 
 GetUserAllowDeleteOk returns a tuple with the UserAllowDelete field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserAllowDelete
 
-`func (o *DomainConfigLdap) SetUserAllowDelete(v bool)`
+`func (o *DomainConfigLdap) SetUserAllowDelete(v string)`
 
 SetUserAllowDelete sets UserAllowDelete field to given value.
 
