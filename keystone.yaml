@@ -2538,7 +2538,7 @@ components:
           example: mail
           default: mail
           description: The LDAP attribute mapped to user emails in keystone.
-        user_password_attribute:
+        user_pass_attribute:
           type: string
           example: userPassword
           default: userPassword

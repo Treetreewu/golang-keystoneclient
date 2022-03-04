@@ -34,7 +34,7 @@ type DomainConfigLdap struct {
 	// The LDAP attribute mapped to user emails in keystone.
 	UserMailAttribute *string `json:"user_mail_attribute,omitempty"`
 	// The LDAP attribute mapped to user passwords in keystone.
-	UserPasswordAttribute *string `json:"user_password_attribute,omitempty"`
+	UserPassAttribute *string `json:"user_pass_attribute,omitempty"`
 	// Bitmask integer to select which bit indicates the enabled value if the LDAP server represents \"enabled\" as a bit on an integer rather than as a discrete boolean. A value of `0` indicates that the mask is not used. If this is not set to `0` the typical value is `2`. This is typically used when `[ldap] user_enabled_attribute = userAccountControl`. Setting this option causes keystone to ignore the value of `[ldap] user_enabled_invert`.
 	UserEnabledMask *string `json:"user_enabled_mask,omitempty"`
 	// The default value to enable users. This should match an appropriate integer value if the LDAP server uses non-boolean (bitmask) values to indicate if a user is enabled or disabled. If this is not set to `True`, then the typical value is `512`. This is typically used when `[ldap] user_enabled_attribute = userAccountControl`.
@@ -64,8 +64,8 @@ func NewDomainConfigLdap() *DomainConfigLdap {
 	this.UserNameAttribute = &userNameAttribute
 	var userMailAttribute string = "mail"
 	this.UserMailAttribute = &userMailAttribute
-	var userPasswordAttribute string = "userPassword"
-	this.UserPasswordAttribute = &userPasswordAttribute
+	var userPassAttribute string = "userPassword"
+	this.UserPassAttribute = &userPassAttribute
 	var userEnabledMask string = "2"
 	this.UserEnabledMask = &userEnabledMask
 	var userEnabledDefault string = "true"
@@ -94,8 +94,8 @@ func NewDomainConfigLdapWithDefaults() *DomainConfigLdap {
 	this.UserNameAttribute = &userNameAttribute
 	var userMailAttribute string = "mail"
 	this.UserMailAttribute = &userMailAttribute
-	var userPasswordAttribute string = "userPassword"
-	this.UserPasswordAttribute = &userPasswordAttribute
+	var userPassAttribute string = "userPassword"
+	this.UserPassAttribute = &userPassAttribute
 	var userEnabledMask string = "2"
 	this.UserEnabledMask = &userEnabledMask
 	var userEnabledDefault string = "true"
@@ -431,36 +431,36 @@ func (o *DomainConfigLdap) SetUserMailAttribute(v string) {
 	o.UserMailAttribute = &v
 }
 
-// GetUserPasswordAttribute returns the UserPasswordAttribute field value if set, zero value otherwise.
-func (o *DomainConfigLdap) GetUserPasswordAttribute() string {
-	if o == nil || o.UserPasswordAttribute == nil {
+// GetUserPassAttribute returns the UserPassAttribute field value if set, zero value otherwise.
+func (o *DomainConfigLdap) GetUserPassAttribute() string {
+	if o == nil || o.UserPassAttribute == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserPasswordAttribute
+	return *o.UserPassAttribute
 }
 
-// GetUserPasswordAttributeOk returns a tuple with the UserPasswordAttribute field value if set, nil otherwise
+// GetUserPassAttributeOk returns a tuple with the UserPassAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainConfigLdap) GetUserPasswordAttributeOk() (*string, bool) {
-	if o == nil || o.UserPasswordAttribute == nil {
+func (o *DomainConfigLdap) GetUserPassAttributeOk() (*string, bool) {
+	if o == nil || o.UserPassAttribute == nil {
 		return nil, false
 	}
-	return o.UserPasswordAttribute, true
+	return o.UserPassAttribute, true
 }
 
-// HasUserPasswordAttribute returns a boolean if a field has been set.
-func (o *DomainConfigLdap) HasUserPasswordAttribute() bool {
-	if o != nil && o.UserPasswordAttribute != nil {
+// HasUserPassAttribute returns a boolean if a field has been set.
+func (o *DomainConfigLdap) HasUserPassAttribute() bool {
+	if o != nil && o.UserPassAttribute != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetUserPasswordAttribute gets a reference to the given string and assigns it to the UserPasswordAttribute field.
-func (o *DomainConfigLdap) SetUserPasswordAttribute(v string) {
-	o.UserPasswordAttribute = &v
+// SetUserPassAttribute gets a reference to the given string and assigns it to the UserPassAttribute field.
+func (o *DomainConfigLdap) SetUserPassAttribute(v string) {
+	o.UserPassAttribute = &v
 }
 
 // GetUserEnabledMask returns the UserEnabledMask field value if set, zero value otherwise.
@@ -719,8 +719,8 @@ func (o DomainConfigLdap) MarshalJSON() ([]byte, error) {
 	if o.UserMailAttribute != nil {
 		toSerialize["user_mail_attribute"] = o.UserMailAttribute
 	}
-	if o.UserPasswordAttribute != nil {
-		toSerialize["user_password_attribute"] = o.UserPasswordAttribute
+	if o.UserPassAttribute != nil {
+		toSerialize["user_pass_attribute"] = o.UserPassAttribute
 	}
 	if o.UserEnabledMask != nil {
 		toSerialize["user_enabled_mask"] = o.UserEnabledMask

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **UserIdAttribute** | Pointer to **string** | The LDAP attribute mapped to user IDs in keystone. This must NOT be a multivalued attribute. User IDs are expected to be globally unique across keystone domains and URL-safe.  | [optional] [default to "cn"]
 **UserNameAttribute** | Pointer to **string** | The LDAP attribute mapped to user names in keystone. User names are expected to be unique only within a keystone domain and are not expected to be URL-safe.  | [optional] [default to "sn"]
 **UserMailAttribute** | Pointer to **string** | The LDAP attribute mapped to user emails in keystone. | [optional] [default to "mail"]
-**UserPasswordAttribute** | Pointer to **string** | The LDAP attribute mapped to user passwords in keystone. | [optional] [default to "userPassword"]
+**UserPassAttribute** | Pointer to **string** | The LDAP attribute mapped to user passwords in keystone. | [optional] [default to "userPassword"]
 **UserEnabledMask** | Pointer to **string** | Bitmask integer to select which bit indicates the enabled value if the LDAP server represents \&quot;enabled\&quot; as a bit on an integer rather than as a discrete boolean. A value of &#x60;0&#x60; indicates that the mask is not used. If this is not set to &#x60;0&#x60; the typical value is &#x60;2&#x60;. This is typically used when &#x60;[ldap] user_enabled_attribute &#x3D; userAccountControl&#x60;. Setting this option causes keystone to ignore the value of &#x60;[ldap] user_enabled_invert&#x60;.  | [optional] [default to "2"]
 **UserEnabledDefault** | Pointer to **string** | The default value to enable users. This should match an appropriate integer value if the LDAP server uses non-boolean (bitmask) values to indicate if a user is enabled or disabled. If this is not set to &#x60;True&#x60;, then the typical value is &#x60;512&#x60;. This is typically used when &#x60;[ldap] user_enabled_attribute &#x3D; userAccountControl&#x60;.  | [optional] [default to "true"]
 **UserAllowCreate** | Pointer to **string** | If enabled, keystone is allowed to create users in the LDAP server. | [optional] [default to "true"]
@@ -292,30 +292,30 @@ SetUserMailAttribute sets UserMailAttribute field to given value.
 
 HasUserMailAttribute returns a boolean if a field has been set.
 
-### GetUserPasswordAttribute
+### GetUserPassAttribute
 
-`func (o *DomainConfigLdap) GetUserPasswordAttribute() string`
+`func (o *DomainConfigLdap) GetUserPassAttribute() string`
 
-GetUserPasswordAttribute returns the UserPasswordAttribute field if non-nil, zero value otherwise.
+GetUserPassAttribute returns the UserPassAttribute field if non-nil, zero value otherwise.
 
-### GetUserPasswordAttributeOk
+### GetUserPassAttributeOk
 
-`func (o *DomainConfigLdap) GetUserPasswordAttributeOk() (*string, bool)`
+`func (o *DomainConfigLdap) GetUserPassAttributeOk() (*string, bool)`
 
-GetUserPasswordAttributeOk returns a tuple with the UserPasswordAttribute field if it's non-nil, zero value otherwise
+GetUserPassAttributeOk returns a tuple with the UserPassAttribute field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUserPasswordAttribute
+### SetUserPassAttribute
 
-`func (o *DomainConfigLdap) SetUserPasswordAttribute(v string)`
+`func (o *DomainConfigLdap) SetUserPassAttribute(v string)`
 
-SetUserPasswordAttribute sets UserPasswordAttribute field to given value.
+SetUserPassAttribute sets UserPassAttribute field to given value.
 
-### HasUserPasswordAttribute
+### HasUserPassAttribute
 
-`func (o *DomainConfigLdap) HasUserPasswordAttribute() bool`
+`func (o *DomainConfigLdap) HasUserPassAttribute() bool`
 
-HasUserPasswordAttribute returns a boolean if a field has been set.
+HasUserPassAttribute returns a boolean if a field has been set.
 
 ### GetUserEnabledMask
 
