@@ -46,6 +46,7 @@ func NewDefaultClient() (*Client, error) {
 func NewClient(config *openapi.Configuration) (*Client, error) {
 	rawURL, _ := config.Servers.URL(0, nil)
 
+	config.DefaultHeader["Enhanced"] = "enabled"
 	client := &Client{
 		Req:       req.New(),
 		APIClient: openapi.NewAPIClient(config),
