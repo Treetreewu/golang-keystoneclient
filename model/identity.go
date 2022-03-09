@@ -2,20 +2,28 @@
 
 package model
 
+type authIdentity struct {
+	Methods  []string            `json:"methods"`
+	Password *PasswordCredential `json:"password,omitempty"`
+	Token    *TokenCredential    `json:"token,omitempty"`
+}
+
+type auth struct {
+	Identity authIdentity `json:"identity"`
+	Scope    Scope        `json:"scope,omitempty"`
+}
+
 type TokenRequestData struct {
-	Auth struct {
-		Identity struct {
-			Methods  []string            `json:"methods"`
-			Password *PasswordCredential `json:"password,omitempty"`
-			Token    *TokenCredential    `json:"token,omitempty"`
-		} `json:"identity"`
-		Scope Scope `json:"scope,omitempty"`
-	} `json:"auth"`
+	Auth auth `json:"auth"`
 }
 
 type IDOrName struct {
 	ID   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
+}
+
+type domain struct {
+	IDOrName
 }
 
 type Scope interface{}
@@ -24,43 +32,40 @@ type ExplicitUnScoped = string
 
 type DomainScope struct {
 	Scope  `json:",omitempty,inline"`
-	Domain struct {
-		IDOrName
-	} `json:"domain"`
+	Domain domain `json:"domain"`
 }
 
 func NewDomainScope(id *string, name *string) *DomainScope {
 	return &DomainScope{
-		Domain: struct{ IDOrName }{
-			IDOrName: IDOrName{
-				ID:   id,
-				Name: name,
-			},
+		Domain: domain{
+			IDOrName{id, name},
 		},
 	}
 }
 
+type system struct {
+	All bool `json:"all"`
+}
+
 type SystemScope struct {
 	Scope  `json:",omitempty,inline"`
-	System struct {
-		All bool `json:"all"`
-	} `json:"system"`
+	System system `json:"system"`
 }
 
 func NewSystemScope() *SystemScope {
-	return &SystemScope{System: struct {
-		All bool `json:"all"`
-	}(struct{ All bool }{All: true})}
+	return &SystemScope{
+		System: system{true},
+	}
+}
+
+type project struct {
+	IDOrName
+	Domain domain `json:"domain,omitempty"`
 }
 
 type ProjectScope struct {
 	Scope   `json:",omitempty,inline"`
-	Project struct {
-		IDOrName
-		Domain struct {
-			IDOrName
-		} `json:"domain,omitempty"`
-	} `json:"project"`
+	Project project `json:"project"`
 }
 
 func NewProjectScope(
@@ -68,39 +73,27 @@ func NewProjectScope(
 	domainID *string, domainName *string,
 ) *ProjectScope {
 	return &ProjectScope{
-		Project: struct {
-			IDOrName
-			Domain struct{ IDOrName } `json:"domain,omitempty"`
-		}(struct {
-			IDOrName
-			Domain struct{ IDOrName }
-		}{
-			IDOrName: IDOrName{
-				ID:   projectID,
-				Name: ProjectName,
-			},
-			Domain: struct{ IDOrName }{
-				IDOrName: IDOrName{
-					ID:   domainID,
-					Name: domainName,
-				},
+		Project: project{
+			IDOrName: IDOrName{projectID, ProjectName},
+			Domain: domain{
+				IDOrName{domainID, domainName},
 			},
 		},
-		),
 	}
 }
 
 type Credential interface{}
 
+type user struct {
+	IDOrName
+	Email    *string `json:"email,omitempty"`
+	Password string  `json:"password"`
+	Domain   domain  `json:"domain"`
+}
+
 type PasswordCredential struct {
 	Credential `json:",omitempty,inline"`
-	User       struct {
-		IDOrName
-		Password string `json:"password"`
-		Domain   struct {
-			IDOrName
-		} `json:"domain"`
-	} `json:"user"`
+	User       user `json:"user"`
 }
 
 // NewPasswordCredential creates a password credential.
@@ -109,25 +102,30 @@ func NewPasswordCredential(
 	domainID *string, domainName *string,
 ) *PasswordCredential {
 	return &PasswordCredential{
-		User: struct {
-			IDOrName
-			Password string             `json:"password"`
-			Domain   struct{ IDOrName } `json:"domain"`
-		}(struct {
-			IDOrName
-			Password string
-			Domain   struct{ IDOrName }
-		}{
-			IDOrName: IDOrName{
-				ID:   userID,
-				Name: userName,
-			}, Password: password, Domain: struct{ IDOrName }{
-				IDOrName: IDOrName{
-					ID:   domainID,
-					Name: domainName,
-				},
+		User: user{
+			IDOrName: IDOrName{userID, userName},
+			Password: password,
+			Domain: domain{
+				IDOrName{domainID, domainName},
 			},
-		}),
+		},
+	}
+}
+
+// NewPasswordCredentialByEmail creates a password credential by email.
+// This feature is supported by easystack cloud only.
+func NewPasswordCredentialByEmail(
+	email string, password string,
+	domainID *string, domainName *string,
+) *PasswordCredential {
+	return &PasswordCredential{
+		User: user{
+			Email:    &email,
+			Password: password,
+			Domain: domain{
+				IDOrName{domainID, domainName},
+			},
+		},
 	}
 }
 
