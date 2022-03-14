@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | The role type. | [optional] 
 **DomainId** | Pointer to **string** | The ID of the domain of the role. | [optional] 
 **Description** | Pointer to **string** | Add description about the role. | [optional] 
+**Display** | Pointer to **bool** | Show this role in ECP or not. | [optional] 
 
 ## Methods
 
@@ -122,6 +123,31 @@ SetDescription sets Description field to given value.
 `func (o *RoleCreate) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDisplay
+
+`func (o *RoleCreate) GetDisplay() bool`
+
+GetDisplay returns the Display field if non-nil, zero value otherwise.
+
+### GetDisplayOk
+
+`func (o *RoleCreate) GetDisplayOk() (*bool, bool)`
+
+GetDisplayOk returns a tuple with the Display field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplay
+
+`func (o *RoleCreate) SetDisplay(v bool)`
+
+SetDisplay sets Display field to given value.
+
+### HasDisplay
+
+`func (o *RoleCreate) HasDisplay() bool`
+
+HasDisplay returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -27,6 +27,8 @@ type Role struct {
 	Description *string `json:"description,omitempty"`
 	// The role type in keystone.roles.extra.
 	Type *string `json:"type,omitempty"`
+	// Show this role in ECP or not.
+	Display *bool `json:"display,omitempty"`
 }
 
 // NewRole instantiates a new Role object
@@ -238,6 +240,38 @@ func (o *Role) SetType(v string) {
 	o.Type = &v
 }
 
+// GetDisplay returns the Display field value if set, zero value otherwise.
+func (o *Role) GetDisplay() bool {
+	if o == nil || o.Display == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Display
+}
+
+// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetDisplayOk() (*bool, bool) {
+	if o == nil || o.Display == nil {
+		return nil, false
+	}
+	return o.Display, true
+}
+
+// HasDisplay returns a boolean if a field has been set.
+func (o *Role) HasDisplay() bool {
+	if o != nil && o.Display != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplay gets a reference to the given bool and assigns it to the Display field.
+func (o *Role) SetDisplay(v bool) {
+	o.Display = &v
+}
+
 func (o Role) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -257,6 +291,9 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
+	}
+	if o.Display != nil {
+		toSerialize["display"] = o.Display
 	}
 	return json.Marshal(toSerialize)
 }

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**SelfLink**](SelfLink.md) |  | [optional] 
 **Description** | Pointer to **string** | The role description. | [optional] 
 **Type** | Pointer to **string** | The role type in keystone.roles.extra. | [optional] 
+**Display** | Pointer to **bool** | Show this role in ECP or not. | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetType sets Type field to given value.
 `func (o *Role) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetDisplay
+
+`func (o *Role) GetDisplay() bool`
+
+GetDisplay returns the Display field if non-nil, zero value otherwise.
+
+### GetDisplayOk
+
+`func (o *Role) GetDisplayOk() (*bool, bool)`
+
+GetDisplayOk returns a tuple with the Display field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplay
+
+`func (o *Role) SetDisplay(v bool)`
+
+SetDisplay sets Display field to given value.
+
+### HasDisplay
+
+`func (o *Role) HasDisplay() bool`
+
+HasDisplay returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

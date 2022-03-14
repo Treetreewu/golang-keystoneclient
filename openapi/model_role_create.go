@@ -24,6 +24,8 @@ type RoleCreate struct {
 	DomainId *string `json:"domain_id,omitempty"`
 	// Add description about the role.
 	Description *string `json:"description,omitempty"`
+	// Show this role in ECP or not.
+	Display *bool `json:"display,omitempty"`
 }
 
 // NewRoleCreate instantiates a new RoleCreate object
@@ -164,6 +166,38 @@ func (o *RoleCreate) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetDisplay returns the Display field value if set, zero value otherwise.
+func (o *RoleCreate) GetDisplay() bool {
+	if o == nil || o.Display == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Display
+}
+
+// GetDisplayOk returns a tuple with the Display field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleCreate) GetDisplayOk() (*bool, bool) {
+	if o == nil || o.Display == nil {
+		return nil, false
+	}
+	return o.Display, true
+}
+
+// HasDisplay returns a boolean if a field has been set.
+func (o *RoleCreate) HasDisplay() bool {
+	if o != nil && o.Display != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplay gets a reference to the given bool and assigns it to the Display field.
+func (o *RoleCreate) SetDisplay(v bool) {
+	o.Display = &v
+}
+
 func (o RoleCreate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -177,6 +211,9 @@ func (o RoleCreate) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.Display != nil {
+		toSerialize["display"] = o.Display
 	}
 	return json.Marshal(toSerialize)
 }
