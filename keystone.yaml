@@ -2199,6 +2199,27 @@ paths:
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+  /v3/OS-FEDERATION/service_providers:
+    get:
+      operationId: list_service_providers
+      tags:
+        - service_provider
+      description: List service providers.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  service_providers:
+                    items:
+                      $ref: '#/components/schemas/service_provider'
+                    type: array
+                  links:
+                    $ref: '#/components/schemas/links'
+                title: ServiceProviderListResponse
+                type: object
+          description: A list of service providers
 
 components:
   parameters:
@@ -2869,3 +2890,18 @@ components:
             or trusts.
         links:
           $ref: '#/components/schemas/self_link'
+    service_provider:
+      type: object
+      properties:
+        auth_url:
+          $ref: '#/components/schemas/uri'
+        links:
+          $ref: '#/components/schemas/self_link'
+        description:
+          type: string
+        enabled:
+          type: boolean
+        id:
+          type: string
+        relay_state_prefix:
+          type: string

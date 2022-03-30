@@ -61,6 +61,8 @@ type APIClient struct {
 
 	RoleAssignmentApi *RoleAssignmentApiService
 
+	ServiceProviderApi *ServiceProviderApiService
+
 	UserApi *UserApiService
 }
 
@@ -86,6 +88,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectApi = (*ProjectApiService)(&c.common)
 	c.RoleApi = (*RoleApiService)(&c.common)
 	c.RoleAssignmentApi = (*RoleAssignmentApiService)(&c.common)
+	c.ServiceProviderApi = (*ServiceProviderApiService)(&c.common)
 	c.UserApi = (*UserApiService)(&c.common)
 
 	return c
