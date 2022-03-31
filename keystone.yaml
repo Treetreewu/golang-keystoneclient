@@ -2220,6 +2220,29 @@ paths:
                 title: ServiceProviderListResponse
                 type: object
           description: A list of service providers
+  /v3/OS-FEDERATION/service_providers/{service_provider_id}:
+    parameters:
+      - name: service_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get_service_provider
+      tags:
+        - service_provider
+      description: Get service provider.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  service_provider:
+                    $ref: '#/components/schemas/service_provider'
+                title: ServiceProviderResponse
+                type: object
+          description: A list of service providers
 
 components:
   parameters:

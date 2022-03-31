@@ -128,6 +128,7 @@ Class | Method | HTTP request | Description
 *RoleAssignmentApi* | [**UnassignGroupProjectRole**](docs/RoleAssignmentApi.md#unassigngroupprojectrole) | **Delete** /v3/projects/{project_id}/groups/{group_id}/roles/{role_id} | 
 *RoleAssignmentApi* | [**UnassignUserDomainRole**](docs/RoleAssignmentApi.md#unassignuserdomainrole) | **Delete** /v3/domains/{domain_id}/users/{user_id}/roles/{role_id} | 
 *RoleAssignmentApi* | [**UnassignUserProjectRole**](docs/RoleAssignmentApi.md#unassignuserprojectrole) | **Delete** /v3/projects/{project_id}/users/{user_id}/roles/{role_id} | 
+*ServiceProviderApi* | [**GetServiceProvider**](docs/ServiceProviderApi.md#getserviceprovider) | **Get** /v3/OS-FEDERATION/service_providers/{service_provider_id} | 
 *ServiceProviderApi* | [**ListServiceProviders**](docs/ServiceProviderApi.md#listserviceproviders) | **Get** /v3/OS-FEDERATION/service_providers | 
 *UserApi* | [**CreateUser**](docs/UserApi.md#createuser) | **Post** /v3/users | 
 *UserApi* | [**DeleteUser**](docs/UserApi.md#deleteuser) | **Delete** /v3/users/{user_id} | 
@@ -202,6 +203,7 @@ Class | Method | HTTP request | Description
  - [SelfLink](docs/SelfLink.md)
  - [ServiceProvider](docs/ServiceProvider.md)
  - [ServiceProviderListResponse](docs/ServiceProviderListResponse.md)
+ - [ServiceProviderResponse](docs/ServiceProviderResponse.md)
  - [User](docs/User.md)
  - [UserCreate](docs/UserCreate.md)
  - [UserCreateRequest](docs/UserCreateRequest.md)
