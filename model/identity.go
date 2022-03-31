@@ -82,6 +82,26 @@ func NewProjectScope(
 	}
 }
 
+type serviceProvider struct {
+	IDOrName
+}
+
+type ServiceProviderScope struct {
+	Scope           `json:",omitempty,inline"`
+	ServiceProvider serviceProvider `json:"service_provider"`
+}
+
+func NewServiceProviderScope(id *string, name *string) *ServiceProviderScope {
+	return &ServiceProviderScope{
+		ServiceProvider: serviceProvider{
+			IDOrName{
+				Name: name,
+				ID:   id,
+			},
+		},
+	}
+}
+
 type Credential interface{}
 
 type user struct {
